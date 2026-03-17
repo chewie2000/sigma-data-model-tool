@@ -35,7 +35,7 @@
             },
             {
               "id": "inode-7C0k8oH45vAxlQBm762T6z/DURATION",
-              "formula": "[TRIP/Duration1]"
+              "formula": "[TRIP/Duration]"
             },
             {
               "id": "inode-7C0k8oH45vAxlQBm762T6z/START_DATE",
