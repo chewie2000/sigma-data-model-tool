@@ -1,0 +1,168 @@
+{
+  "dataModelId": "e481583e-8c22-47f5-b74d-3928f923fdf5",
+  "name": "POS Sales (Databricks)",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/POS-Sales-Databricks-6XbmoDx1T3p942WC6nBarX",
+  "documentVersion": 1,
+  "latestDocumentVersion": 1,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "ba1199b7-039c-48e8-9887-c62e0431a5b5",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-01-14T11:21:03.855Z",
+  "updatedAt": "2026-01-14T11:21:03.855Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "ixVBTYWgL6",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "W49BHNYhNf",
+          "kind": "table",
+          "source": {
+            "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+            "kind": "warehouse-table",
+            "path": [
+              "sigma_sample_data",
+              "retail__plugs_electronics",
+              "f_point_of_sale"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-2qr99ulTYvJkSxx2wAC8YL/ORDER_NUMBER",
+              "formula": "[f_point_of_sale/Order Number]",
+              "hidden": true
+            },
+            {
+              "id": "inode-2qr99ulTYvJkSxx2wAC8YL/PRODUCT_KEY",
+              "formula": "[f_point_of_sale/Product Key]",
+              "hidden": true
+            },
+            {
+              "id": "inode-2qr99ulTYvJkSxx2wAC8YL/SALES_QUANTITY",
+              "formula": "[f_point_of_sale/Sales Quantity]"
+            },
+            {
+              "id": "inode-2qr99ulTYvJkSxx2wAC8YL/SALES_AMOUNT",
+              "formula": "[f_point_of_sale/Sales Amount]"
+            },
+            {
+              "id": "inode-2qr99ulTYvJkSxx2wAC8YL/COST_AMOUNT",
+              "formula": "[f_point_of_sale/Cost Amount]"
+            }
+          ],
+          "name": "POS Sales",
+          "relationships": [
+            {
+              "id": "U1VlYG0cH1",
+              "targetElementId": "HZ2-RrowfN",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-2qr99ulTYvJkSxx2wAC8YL/PRODUCT_KEY",
+                  "targetColumnId": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_KEY"
+                }
+              ]
+            }
+          ],
+          "order": [
+            "inode-2qr99ulTYvJkSxx2wAC8YL/ORDER_NUMBER",
+            "inode-2qr99ulTYvJkSxx2wAC8YL/PRODUCT_KEY",
+            "inode-2qr99ulTYvJkSxx2wAC8YL/SALES_QUANTITY",
+            "inode-2qr99ulTYvJkSxx2wAC8YL/SALES_AMOUNT",
+            "inode-2qr99ulTYvJkSxx2wAC8YL/COST_AMOUNT"
+          ]
+        },
+        {
+          "id": "HZ2-RrowfN",
+          "kind": "table",
+          "source": {
+            "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+            "kind": "warehouse-table",
+            "path": [
+              "sigma_sample_data",
+              "retail__plugs_electronics",
+              "d_product"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_KEY",
+              "formula": "[d_product/Product Key]",
+              "hidden": true
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_NAME",
+              "formula": "[d_product/Product Name]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_TYPE",
+              "formula": "[d_product/Product Type]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_FAMILY",
+              "formula": "[d_product/Product Family]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_LINE",
+              "formula": "[d_product/Product Line]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_GROUP",
+              "formula": "[d_product/Product Group]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_DESCRIPTION",
+              "formula": "[d_product/Product Description]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/SKU_NUMBER",
+              "formula": "[d_product/Sku Number]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRICE",
+              "formula": "[d_product/Price]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_STATUS",
+              "formula": "[d_product/Product Status]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_NOTES",
+              "formula": "[d_product/Product Notes]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/UPDATED_AT",
+              "formula": "[d_product/Updated At]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/UPDATED_BY",
+              "formula": "[d_product/Updated By]"
+            },
+            {
+              "id": "inode-7zO9CDAcaXpCq5r9oHhD1I/PROPOSED_PRICE",
+              "formula": "[d_product/Proposed Price]"
+            }
+          ],
+          "name": "Products",
+          "order": [
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_KEY",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_NAME",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_TYPE",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_FAMILY",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_LINE",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_GROUP",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_DESCRIPTION",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/SKU_NUMBER",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRICE",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_STATUS",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PRODUCT_NOTES",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/UPDATED_AT",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/UPDATED_BY",
+            "inode-7zO9CDAcaXpCq5r9oHhD1I/PROPOSED_PRICE"
+          ]
+        }
+      ]
+    }
+  ]
+}
