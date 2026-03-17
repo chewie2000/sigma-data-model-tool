@@ -1,0 +1,65 @@
+{
+  "dataModelId": "74a4f8e9-634c-49ad-ab03-24ee90c98fdc",
+  "name": "Employee Model",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Employee-Model-3y6v9yOCsIjoCXGltn4ZZO",
+  "documentVersion": 4,
+  "latestDocumentVersion": 4,
+  "ownerId": "3oKRgsi13B6zBIXevMGi2rkyVN6hD",
+  "folderId": "b03bcb16-8d4c-42dc-b1d6-45a0015d94e5",
+  "createdBy": "3oKRgsi13B6zBIXevMGi2rkyVN6hD",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-02-18T12:57:19.436Z",
+  "updatedAt": "2026-03-17T14:29:44.507Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "zhTr9-6Jd1",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "iS6DKhK859",
+          "kind": "table",
+          "source": {
+            "connectionId": "9f71228a-a323-4b8e-9b33-6ad4fd1685ae",
+            "kind": "warehouse-table",
+            "path": [
+              "MARKO",
+              "PRODUCTION",
+              "EMPLOYEE"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-6aEElq7MJI9EDNbE9UotJX/ID",
+              "formula": "[EMPLOYEE/Id]"
+            },
+            {
+              "id": "inode-6aEElq7MJI9EDNbE9UotJX/FIRST_NAME",
+              "formula": "[EMPLOYEE/First Name]"
+            },
+            {
+              "id": "inode-6aEElq7MJI9EDNbE9UotJX/LAST_NAME",
+              "formula": "[EMPLOYEE/Last Name]"
+            },
+            {
+              "id": "inode-6aEElq7MJI9EDNbE9UotJX/EMAIL",
+              "formula": "[EMPLOYEE/Email]"
+            },
+            {
+              "id": "inode-6aEElq7MJI9EDNbE9UotJX/POSITION",
+              "formula": "[EMPLOYEE/Position]"
+            }
+          ],
+          "description": "Development",
+          "order": [
+            "inode-6aEElq7MJI9EDNbE9UotJX/ID",
+            "inode-6aEElq7MJI9EDNbE9UotJX/FIRST_NAME",
+            "inode-6aEElq7MJI9EDNbE9UotJX/LAST_NAME",
+            "inode-6aEElq7MJI9EDNbE9UotJX/EMAIL",
+            "inode-6aEElq7MJI9EDNbE9UotJX/POSITION"
+          ]
+        }
+      ]
+    }
+  ]
+}
