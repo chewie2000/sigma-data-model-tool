@@ -1,0 +1,355 @@
+{
+  "dataModelId": "3b71eb9a-7f71-424d-a76d-90fd402648de",
+  "name": "DMTest",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/DMTest-1OaBL68zDSrQZ5HauwpRPU",
+  "documentVersion": 3,
+  "latestDocumentVersion": 3,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-01-29T13:33:26.787Z",
+  "updatedAt": "2026-01-29T13:53:18.866Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "_dRQR6NlJ2",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "2djAZuz_Up",
+          "kind": "table",
+          "source": {
+            "kind": "join",
+            "joins": [
+              {
+                "left": {
+                  "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "RETAIL",
+                    "PLUGS_ELECTRONICS",
+                    "PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA"
+                  ]
+                },
+                "right": {
+                  "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "RETAIL",
+                    "PLUGS_ELECTRONICS",
+                    "D_PRODUCT"
+                  ]
+                },
+                "columns": [
+                  {
+                    "left": "[Product Name]",
+                    "right": "[Product Name]"
+                  }
+                ],
+                "joinType": "left-outer"
+              }
+            ],
+            "primarySource": {
+              "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+              "kind": "warehouse-table",
+              "path": [
+                "RETAIL",
+                "PLUGS_ELECTRONICS",
+                "PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA"
+              ]
+            }
+          },
+          "columns": [
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/ORDER_NUMBER",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Order Number]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/DATE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/SKU_NUMBER",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Sku Number]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/QUANTITY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Quantity]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/COST",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cost]",
+              "hidden": true
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRICE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Price]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_TYPE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Type]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_FAMILY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Family]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_LINE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Line]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/BRAND",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Brand]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_NAME",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Name]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_NAME",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Name]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_KEY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Key]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_REGION",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Region]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_STATE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store State]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_CITY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store City]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_ZIP_CODE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Zip Code]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_LATITUDE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Latitude]",
+              "hidden": true
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_LONGITUDE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Longitude]",
+              "hidden": true
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/CUST_KEY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cust Key]",
+              "hidden": true
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/CUSTOMER_NAME",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Customer Name]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/CUST_JSON",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cust Json]"
+            },
+            {
+              "id": "qtolmfQEa3",
+              "formula": "[D_PRODUCT/Product Key]"
+            },
+            {
+              "id": "8bGHgQ5j4a",
+              "formula": "[D_PRODUCT/Product Name]"
+            },
+            {
+              "id": "Z-9Cnqy2M-",
+              "formula": "[D_PRODUCT/Product Type]"
+            },
+            {
+              "id": "GT3P5pfaaP",
+              "formula": "[D_PRODUCT/Product Family]"
+            },
+            {
+              "id": "UXNxG64rvF",
+              "formula": "[D_PRODUCT/Product Line]"
+            },
+            {
+              "id": "4BGVCBv6KI",
+              "formula": "[D_PRODUCT/Product Group]"
+            },
+            {
+              "id": "VdUdbGAoZo",
+              "formula": "[D_PRODUCT/Product Description]"
+            },
+            {
+              "id": "Nb9OQUGqFR",
+              "formula": "[D_PRODUCT/Sku Number]"
+            },
+            {
+              "id": "YFabtEfZBD",
+              "formula": "[D_PRODUCT/Price]"
+            },
+            {
+              "id": "AJnFgkV3Nc",
+              "formula": "[D_PRODUCT/Product Status]"
+            },
+            {
+              "id": "8ZmqCweAft",
+              "formula": "[D_PRODUCT/Product Notes]"
+            },
+            {
+              "id": "WHFWbP_6W9",
+              "formula": "[D_PRODUCT/Updated At]"
+            },
+            {
+              "id": "nU9W14SBn9",
+              "formula": "[D_PRODUCT/Updated By]"
+            },
+            {
+              "id": "JZz7D7TzM_",
+              "formula": "[D_PRODUCT/Proposed Price]"
+            }
+          ],
+          "name": "SalesAndProd",
+          "relationships": [
+            {
+              "id": "9V9GXB1QmV",
+              "targetElementId": "_VwsN-bM1s",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_NAME",
+                  "targetColumnId": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NAME"
+                }
+              ]
+            }
+          ],
+          "order": [
+            "inode-2ZNbDBalxsk5fxMYhCixgR/ORDER_NUMBER",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/DATE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/SKU_NUMBER",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/QUANTITY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/COST",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRICE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_TYPE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_FAMILY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_LINE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/BRAND",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_NAME",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_NAME",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_KEY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_REGION",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_STATE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_CITY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_ZIP_CODE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_LATITUDE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_LONGITUDE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/CUST_KEY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/CUSTOMER_NAME",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/CUST_JSON",
+            "qtolmfQEa3",
+            "8bGHgQ5j4a",
+            "Z-9Cnqy2M-",
+            "GT3P5pfaaP",
+            "UXNxG64rvF",
+            "4BGVCBv6KI",
+            "VdUdbGAoZo",
+            "Nb9OQUGqFR",
+            "YFabtEfZBD",
+            "AJnFgkV3Nc",
+            "8ZmqCweAft",
+            "WHFWbP_6W9",
+            "nU9W14SBn9",
+            "JZz7D7TzM_"
+          ]
+        },
+        {
+          "id": "_VwsN-bM1s",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "RETAIL",
+              "PLUGS_ELECTRONICS",
+              "D_PRODUCT"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_KEY",
+              "formula": "[D_PRODUCT/Product Key]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NAME",
+              "formula": "[D_PRODUCT/Product Name]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_TYPE",
+              "formula": "[D_PRODUCT/Product Type]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_FAMILY",
+              "formula": "[D_PRODUCT/Product Family]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_LINE",
+              "formula": "[D_PRODUCT/Product Line]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_GROUP",
+              "formula": "[D_PRODUCT/Product Group]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_DESCRIPTION",
+              "formula": "[D_PRODUCT/Product Description]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/SKU_NUMBER",
+              "formula": "[D_PRODUCT/Sku Number]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRICE",
+              "formula": "[D_PRODUCT/Price]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_STATUS",
+              "formula": "[D_PRODUCT/Product Status]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NOTES",
+              "formula": "[D_PRODUCT/Product Notes]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/UPDATED_AT",
+              "formula": "[D_PRODUCT/Updated At]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/UPDATED_BY",
+              "formula": "[D_PRODUCT/Updated By]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PROPOSED_PRICE",
+              "formula": "[D_PRODUCT/Proposed Price]"
+            }
+          ],
+          "order": [
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_KEY",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NAME",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_TYPE",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_FAMILY",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_LINE",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_GROUP",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_DESCRIPTION",
+            "inode-66C3YFDLmOCT5iXeCz3wps/SKU_NUMBER",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRICE",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_STATUS",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NOTES",
+            "inode-66C3YFDLmOCT5iXeCz3wps/UPDATED_AT",
+            "inode-66C3YFDLmOCT5iXeCz3wps/UPDATED_BY",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PROPOSED_PRICE"
+          ]
+        }
+      ]
+    }
+  ]
+}
