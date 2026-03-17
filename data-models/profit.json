@@ -1,0 +1,55 @@
+{
+  "dataModelId": "75f90a42-6b48-4275-a251-f5019745a47b",
+  "name": "Profit",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Profit-3ABUEZDvRsmMen0cQBTHE7",
+  "documentVersion": 5,
+  "latestDocumentVersion": 5,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "22c49487-49b2-4410-8a00-badfa9fdd94a",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2025-11-26T15:39:34.494Z",
+  "updatedAt": "2025-11-28T14:48:20.252Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "sYAkfNKWiT",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "jTdnM82cPa",
+          "kind": "table",
+          "source": {
+            "dataModelId": "95664c87-b898-4a5e-83ad-25f10f335943",
+            "elementId": "J-xthk59-c",
+            "kind": "data-model"
+          },
+          "columns": [
+            {
+              "id": "JN63V7MyUR",
+              "formula": "[Orders/Order Number]"
+            },
+            {
+              "id": "Ag7OYlEeyh",
+              "formula": "[Orders/Date]"
+            },
+            {
+              "id": "GFNnIUfKDi",
+              "formula": "[Orders/Transaction Type]"
+            },
+            {
+              "id": "8mVf4VcZ0x",
+              "formula": "[Orders/Purchase Method]"
+            }
+          ],
+          "order": [
+            "JN63V7MyUR",
+            "Ag7OYlEeyh",
+            "GFNnIUfKDi",
+            "8mVf4VcZ0x"
+          ]
+        }
+      ]
+    }
+  ]
+}
