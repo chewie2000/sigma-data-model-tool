@@ -1,0 +1,153 @@
+{
+  "dataModelId": "affc4f2e-2597-4921-8c3d-89e8374e6d2d",
+  "name": "1. Example Model - Relationships",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/1-Example-Model-Relationships-5m4XHmCqrmQYZws4rqGTdX",
+  "documentVersion": 3,
+  "latestDocumentVersion": 3,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-03-17T16:47:10.668Z",
+  "updatedAt": "2026-03-17T17:25:39.121Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "vQom85PJwR",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "dT12r90KeV",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "FUN",
+              "BIKES",
+              "TRIP"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/ID",
+              "formula": "[TRIP/Id]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/START_DATE",
+              "formula": "[TRIP/Start Date]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/START_STATION_NAME",
+              "formula": "[TRIP/Start Station Name]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/START_STATION_ID",
+              "formula": "[TRIP/Start Station Id]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/END_DATE",
+              "formula": "[TRIP/End Date]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/END_STATION_NAME",
+              "formula": "[TRIP/End Station Name]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/END_STATION_ID",
+              "formula": "[TRIP/End Station Id]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/BIKE_ID",
+              "formula": "[TRIP/Bike Id]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/SUBSCRIPTION_TYPE",
+              "formula": "[TRIP/Subscription Type]"
+            },
+            {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/ZIP_CODE",
+              "formula": "[TRIP/Zip Code]"
+            }
+          ],
+          "relationships": [
+            {
+              "id": "z4tM0MuIFX",
+              "targetElementId": "DzZf0M55lk",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-7C0k8oH45vAxlQBm762T6z/START_STATION_ID",
+                  "targetColumnId": "inode-6wska2OSxV5vjQk8A7QAE2/ID"
+                }
+              ]
+            }
+          ],
+          "order": [
+            "inode-7C0k8oH45vAxlQBm762T6z/ID",
+            "inode-7C0k8oH45vAxlQBm762T6z/START_DATE",
+            "inode-7C0k8oH45vAxlQBm762T6z/START_STATION_NAME",
+            "inode-7C0k8oH45vAxlQBm762T6z/START_STATION_ID",
+            "inode-7C0k8oH45vAxlQBm762T6z/END_DATE",
+            "inode-7C0k8oH45vAxlQBm762T6z/END_STATION_NAME",
+            "inode-7C0k8oH45vAxlQBm762T6z/END_STATION_ID",
+            "inode-7C0k8oH45vAxlQBm762T6z/BIKE_ID",
+            "inode-7C0k8oH45vAxlQBm762T6z/SUBSCRIPTION_TYPE",
+            "inode-7C0k8oH45vAxlQBm762T6z/ZIP_CODE"
+          ]
+        },
+        {
+          "id": "DzZf0M55lk",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "FUN",
+              "BIKES",
+              "STATIONS"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-6wska2OSxV5vjQk8A7QAE2/ID",
+              "formula": "[STATIONS/Id]"
+            },
+            {
+              "id": "inode-6wska2OSxV5vjQk8A7QAE2/NAME",
+              "formula": "[STATIONS/Name]"
+            },
+            {
+              "id": "inode-6wska2OSxV5vjQk8A7QAE2/LAT",
+              "formula": "[STATIONS/Lat]"
+            },
+            {
+              "id": "inode-6wska2OSxV5vjQk8A7QAE2/LONG",
+              "formula": "[STATIONS/Long]"
+            },
+            {
+              "id": "inode-6wska2OSxV5vjQk8A7QAE2/DOCK_COUNT",
+              "formula": "[STATIONS/Dock Count]"
+            },
+            {
+              "id": "inode-6wska2OSxV5vjQk8A7QAE2/CITY",
+              "formula": "[STATIONS/City]"
+            },
+            {
+              "id": "inode-6wska2OSxV5vjQk8A7QAE2/INSTALLATION_DATE",
+              "formula": "[STATIONS/Installation Date]"
+            }
+          ],
+          "order": [
+            "inode-6wska2OSxV5vjQk8A7QAE2/ID",
+            "inode-6wska2OSxV5vjQk8A7QAE2/NAME",
+            "inode-6wska2OSxV5vjQk8A7QAE2/LAT",
+            "inode-6wska2OSxV5vjQk8A7QAE2/LONG",
+            "inode-6wska2OSxV5vjQk8A7QAE2/DOCK_COUNT",
+            "inode-6wska2OSxV5vjQk8A7QAE2/CITY",
+            "inode-6wska2OSxV5vjQk8A7QAE2/INSTALLATION_DATE"
+          ]
+        }
+      ]
+    }
+  ]
+}
