@@ -1,0 +1,49 @@
+{
+  "dataModelId": "31475a8c-40d9-4bb0-aaee-507bf1de3f80",
+  "name": "Model_SchemaTest",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Model_SchemaTest-1uZeqIaxSYJIF4nRxfp2b6",
+  "documentVersion": 16,
+  "latestDocumentVersion": 16,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-02-24T08:43:16.549Z",
+  "updatedAt": "2026-03-04T17:28:46.762Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "ACk_kiuBov",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "FJXkvpshLb",
+          "kind": "table",
+          "source": {
+            "connectionId": "9f71228a-a323-4b8e-9b33-6ad4fd1685ae",
+            "kind": "warehouse-table",
+            "path": [
+              "MARKO",
+              "PUBLIC",
+              "TST_COLUMNS"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-2lI45cd5DvHHiNaSl9LJSi/COLUMN_A",
+              "formula": "[TST_COLUMNS/Column A]"
+            },
+            {
+              "id": "3Kcc2tlB2k",
+              "formula": "[TST_COLUMNS/Column B]"
+            }
+          ],
+          "order": [
+            "inode-2lI45cd5DvHHiNaSl9LJSi/COLUMN_A",
+            "3Kcc2tlB2k"
+          ]
+        }
+      ]
+    }
+  ]
+}
