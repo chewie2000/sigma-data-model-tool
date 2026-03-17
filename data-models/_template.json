@@ -1,0 +1,49 @@
+{
+  "_comment": "This is a template file. Copy and rename to create a new data model.",
+  "_instructions": [
+    "1. Copy this file and rename it (e.g., sales-analytics.json)",
+    "2. Update the name and description",
+    "3. Replace connectionId with your actual connection ID (use web tool dropdown)",
+    "4. Update source.path with your DATABASE, SCHEMA, and TABLE",
+    "5. Add your columns",
+    "6. Commit and push to create a PR"
+  ],
+  "name": "My Data Model",
+  "description": "Description of what this data model contains",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "page_1",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "element_1",
+          "name": "Orders",
+          "kind": "table",
+          "source": {
+            "connectionId": "YOUR_CONNECTION_ID_HERE",
+            "kind": "warehouse-table",
+            "path": ["DATABASE_NAME", "SCHEMA_NAME", "TABLE_NAME"]
+          },
+          "columns": [
+            {
+              "id": "col_1",
+              "name": "Order ID",
+              "formula": "[TABLE_NAME/Order ID]"
+            },
+            {
+              "id": "col_2",
+              "name": "Order Date",
+              "formula": "[TABLE_NAME/Order Date]"
+            },
+            {
+              "id": "col_3",
+              "name": "Amount",
+              "formula": "[TABLE_NAME/Amount]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
