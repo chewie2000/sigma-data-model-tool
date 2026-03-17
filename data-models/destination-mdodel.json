@@ -1,0 +1,74 @@
+{
+  "dataModelId": "ea058317-b182-423d-a402-d0d7e953f3d8",
+  "name": "Destination_Mdodel",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Destination_Mdodel-77AIRisIOvLGXu1iYYsOE0",
+  "documentVersion": 2,
+  "latestDocumentVersion": 2,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "ba1199b7-039c-48e8-9887-c62e0431a5b5",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-01-23T13:36:42.691Z",
+  "updatedAt": "2026-01-23T13:41:00.393Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "ioNd2X73Zi",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "i0PiRv2o19",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "RETAIL",
+              "PLUGS_ELECTRONICS",
+              "4_5_4_CALENDAR"
+            ]
+          },
+          "columns": [
+            {
+              "id": "IzgkfTT-0i",
+              "formula": "[4_5_4_CALENDAR/Date]"
+            },
+            {
+              "id": "NNJtqgrCab",
+              "formula": "[4_5_4_CALENDAR/Fiscal Year]"
+            },
+            {
+              "id": "VpajhT1tAM",
+              "formula": "[4_5_4_CALENDAR/Season]"
+            },
+            {
+              "id": "pG6CcpxuvY",
+              "formula": "[4_5_4_CALENDAR/Fiscal Quarter]"
+            },
+            {
+              "id": "ZNVf_Pi-wy",
+              "formula": "[4_5_4_CALENDAR/Fiscal Period]"
+            },
+            {
+              "id": "HkpQhE208L",
+              "formula": "[4_5_4_CALENDAR/Fiscal Week]"
+            },
+            {
+              "id": "G3AbarxYL8",
+              "formula": "[4_5_4_CALENDAR/Fiscal Day of Year]"
+            }
+          ],
+          "order": [
+            "IzgkfTT-0i",
+            "NNJtqgrCab",
+            "VpajhT1tAM",
+            "pG6CcpxuvY",
+            "ZNVf_Pi-wy",
+            "HkpQhE208L",
+            "G3AbarxYL8"
+          ]
+        }
+      ]
+    }
+  ]
+}
