@@ -1,0 +1,845 @@
+{
+  "dataModelId": "bd5b3862-95b6-4b73-96c2-c4e160f6d4c2",
+  "name": "MatExample",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/MatExample-5LjeJeltWOA7Rs4EBqw9vs",
+  "documentVersion": 3,
+  "latestDocumentVersion": 3,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-01-29T11:44:55.257Z",
+  "updatedAt": "2026-01-29T11:48:40.668Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "u3sNMRw5hN",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "0MsAhinZVP",
+          "kind": "table",
+          "source": {
+            "kind": "join",
+            "joins": [
+              {
+                "left": {
+                  "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "sigma_sample_data",
+                    "retail__plugs_electronics",
+                    "plugs_electronics_hands_on_lab_data"
+                  ]
+                },
+                "right": {
+                  "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "sigma_sample_data",
+                    "retail__plugs_electronics",
+                    "d_product"
+                  ]
+                },
+                "columns": [
+                  {
+                    "left": "[Product Name]",
+                    "right": "[Product Name]"
+                  }
+                ],
+                "joinType": "left-outer"
+              }
+            ],
+            "primarySource": {
+              "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+              "kind": "warehouse-table",
+              "path": [
+                "sigma_sample_data",
+                "retail__plugs_electronics",
+                "plugs_electronics_hands_on_lab_data"
+              ]
+            }
+          },
+          "columns": [
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/ORDER_NUMBER",
+              "formula": "[plugs_electronics_hands_on_lab_data/Order Number]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/DATE",
+              "formula": "[plugs_electronics_hands_on_lab_data/Date]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/SKU_NUMBER",
+              "formula": "[plugs_electronics_hands_on_lab_data/Sku Number]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/QUANTITY",
+              "formula": "[plugs_electronics_hands_on_lab_data/Quantity]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/COST",
+              "formula": "[plugs_electronics_hands_on_lab_data/Cost]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/PRICE",
+              "formula": "[plugs_electronics_hands_on_lab_data/Price]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/PRODUCT_TYPE",
+              "formula": "[plugs_electronics_hands_on_lab_data/Product Type]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/PRODUCT_FAMILY",
+              "formula": "[plugs_electronics_hands_on_lab_data/Product Family]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/PRODUCT_LINE",
+              "formula": "[plugs_electronics_hands_on_lab_data/Product Line]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/BRAND",
+              "formula": "[plugs_electronics_hands_on_lab_data/Brand]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/PRODUCT_NAME",
+              "formula": "[plugs_electronics_hands_on_lab_data/Product Name]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_NAME",
+              "formula": "[plugs_electronics_hands_on_lab_data/Store Name]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_KEY",
+              "formula": "[plugs_electronics_hands_on_lab_data/Store Key]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_REGION",
+              "formula": "[plugs_electronics_hands_on_lab_data/Store Region]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_STATE",
+              "formula": "[plugs_electronics_hands_on_lab_data/Store State]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_CITY",
+              "formula": "[plugs_electronics_hands_on_lab_data/Store City]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_ZIP_CODE",
+              "formula": "[plugs_electronics_hands_on_lab_data/Store Zip Code]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_LATITUDE",
+              "formula": "[plugs_electronics_hands_on_lab_data/Store Latitude]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_LONGITUDE",
+              "formula": "[plugs_electronics_hands_on_lab_data/Store Longitude]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/CUST_KEY",
+              "formula": "[plugs_electronics_hands_on_lab_data/Cust Key]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/CUSTOMER_NAME",
+              "formula": "[plugs_electronics_hands_on_lab_data/Customer Name]"
+            },
+            {
+              "id": "inode-DZpJj6Wo4SFzc55ivD5TZ/CUST_JSON",
+              "formula": "[plugs_electronics_hands_on_lab_data/Cust Json]"
+            },
+            {
+              "id": "SBOBqi7Su1",
+              "formula": "[d_product/Product Key]"
+            },
+            {
+              "id": "lY1v1aN0yf",
+              "formula": "[d_product/Product Name]"
+            },
+            {
+              "id": "-gJs_F-AR2",
+              "formula": "[d_product/Product Type]"
+            },
+            {
+              "id": "gVUGxbEOtD",
+              "formula": "[d_product/Product Family]"
+            },
+            {
+              "id": "vJ4P3rrr8R",
+              "formula": "[d_product/Product Line]"
+            },
+            {
+              "id": "MYPRQvuPiv",
+              "formula": "[d_product/Product Group]"
+            },
+            {
+              "id": "G0HmsKbs7V",
+              "formula": "[d_product/Product Description]"
+            },
+            {
+              "id": "2K7w7H4scN",
+              "formula": "[d_product/Sku Number]"
+            },
+            {
+              "id": "DXivvk8PBs",
+              "formula": "[d_product/Price]"
+            },
+            {
+              "id": "Gg3Ua3yHdA",
+              "formula": "[d_product/Product Status]"
+            },
+            {
+              "id": "vwNNSQRo_9",
+              "formula": "[d_product/Product Notes]"
+            },
+            {
+              "id": "m2guFdptPa",
+              "formula": "[d_product/Updated At]"
+            },
+            {
+              "id": "nw2MXyqlKL",
+              "formula": "[d_product/Updated By]"
+            },
+            {
+              "id": "DGuewWOyPP",
+              "formula": "[d_product/Proposed Price]"
+            }
+          ],
+          "name": "SalesAndProd_MAT1",
+          "order": [
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/ORDER_NUMBER",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/DATE",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/SKU_NUMBER",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/QUANTITY",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/COST",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/PRICE",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/PRODUCT_TYPE",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/PRODUCT_FAMILY",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/PRODUCT_LINE",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/BRAND",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/PRODUCT_NAME",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_NAME",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_KEY",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_REGION",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_STATE",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_CITY",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_ZIP_CODE",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_LATITUDE",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/STORE_LONGITUDE",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/CUST_KEY",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/CUSTOMER_NAME",
+            "inode-DZpJj6Wo4SFzc55ivD5TZ/CUST_JSON",
+            "SBOBqi7Su1",
+            "lY1v1aN0yf",
+            "-gJs_F-AR2",
+            "gVUGxbEOtD",
+            "vJ4P3rrr8R",
+            "MYPRQvuPiv",
+            "G0HmsKbs7V",
+            "2K7w7H4scN",
+            "DXivvk8PBs",
+            "Gg3Ua3yHdA",
+            "vwNNSQRo_9",
+            "m2guFdptPa",
+            "nw2MXyqlKL",
+            "DGuewWOyPP"
+          ]
+        },
+        {
+          "id": "4VWXyTI2xv",
+          "kind": "table",
+          "source": {
+            "kind": "join",
+            "joins": [
+              {
+                "left": {
+                  "elementId": "0MsAhinZVP",
+                  "kind": "table"
+                },
+                "right": {
+                  "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "sigma_sample_data",
+                    "retail__plugs_electronics",
+                    "d_customer"
+                  ]
+                },
+                "columns": [
+                  {
+                    "left": "[Cust Key]",
+                    "right": "[Cust Key]"
+                  }
+                ],
+                "joinType": "left-outer"
+              }
+            ],
+            "primarySource": {
+              "elementId": "0MsAhinZVP",
+              "kind": "table"
+            }
+          },
+          "columns": [
+            {
+              "id": "Odg4a4s013",
+              "formula": "[SalesAndProd_MAT1/Order Number]"
+            },
+            {
+              "id": "FOLPQJSL8_",
+              "formula": "[SalesAndProd_MAT1/Date]"
+            },
+            {
+              "id": "im11bAXRPL",
+              "formula": "[SalesAndProd_MAT1/Sku Number]"
+            },
+            {
+              "id": "92i65PRCin",
+              "formula": "[SalesAndProd_MAT1/Quantity]"
+            },
+            {
+              "id": "T9A1_2kyF3",
+              "formula": "[SalesAndProd_MAT1/Cost]"
+            },
+            {
+              "id": "B296VfPnf1",
+              "formula": "[SalesAndProd_MAT1/Price]"
+            },
+            {
+              "id": "rQq3xio5tV",
+              "formula": "[SalesAndProd_MAT1/Product Type]"
+            },
+            {
+              "id": "kLbQWftLXA",
+              "formula": "[SalesAndProd_MAT1/Product Family]"
+            },
+            {
+              "id": "4wB_spJ0Xr",
+              "formula": "[SalesAndProd_MAT1/Product Line]"
+            },
+            {
+              "id": "LHceFCOr8g",
+              "formula": "[SalesAndProd_MAT1/Brand]"
+            },
+            {
+              "id": "ZV0mKngsiN",
+              "formula": "[SalesAndProd_MAT1/Product Name]"
+            },
+            {
+              "id": "VDoNmnC3ij",
+              "formula": "[SalesAndProd_MAT1/Store Name]"
+            },
+            {
+              "id": "478C56wQKQ",
+              "formula": "[SalesAndProd_MAT1/Store Key]"
+            },
+            {
+              "id": "-YoUNf1Euf",
+              "formula": "[SalesAndProd_MAT1/Store Region]"
+            },
+            {
+              "id": "I-5zmX_PTL",
+              "formula": "[SalesAndProd_MAT1/Store State]"
+            },
+            {
+              "id": "0l_VMPFbAv",
+              "formula": "[SalesAndProd_MAT1/Store City]"
+            },
+            {
+              "id": "0R43V0nmGA",
+              "formula": "[SalesAndProd_MAT1/Store Zip Code]"
+            },
+            {
+              "id": "t4NV-Rxkuj",
+              "formula": "[SalesAndProd_MAT1/Store Latitude]"
+            },
+            {
+              "id": "-ff8rFbUNv",
+              "formula": "[SalesAndProd_MAT1/Store Longitude]"
+            },
+            {
+              "id": "9mb9B2or3P",
+              "formula": "[SalesAndProd_MAT1/Cust Key]"
+            },
+            {
+              "id": "km76ngrGyK",
+              "formula": "[SalesAndProd_MAT1/Customer Name]"
+            },
+            {
+              "id": "WIehqFqvxR",
+              "formula": "[SalesAndProd_MAT1/Cust Json]"
+            },
+            {
+              "id": "MrZ4cXnnKe",
+              "formula": "[SalesAndProd_MAT1/Product Key]"
+            },
+            {
+              "id": "FhsJWbYJYD",
+              "formula": "[SalesAndProd_MAT1/Product Name (d_product)]"
+            },
+            {
+              "id": "iPXocdXYz7",
+              "formula": "[SalesAndProd_MAT1/Product Type (d_product)]"
+            },
+            {
+              "id": "4Nb2VTp15L",
+              "formula": "[SalesAndProd_MAT1/Product Family (d_product)]"
+            },
+            {
+              "id": "ntOVZxgryp",
+              "formula": "[SalesAndProd_MAT1/Product Line (d_product)]"
+            },
+            {
+              "id": "Esd5ks0AMH",
+              "formula": "[SalesAndProd_MAT1/Product Group]"
+            },
+            {
+              "id": "sWIKlwZuVx",
+              "formula": "[SalesAndProd_MAT1/Product Description]"
+            },
+            {
+              "id": "-lpmGIXF5n",
+              "formula": "[SalesAndProd_MAT1/Sku Number (d_product)]"
+            },
+            {
+              "id": "H6bUwt8uPC",
+              "formula": "[SalesAndProd_MAT1/Price (d_product)]"
+            },
+            {
+              "id": "WjBxNalcMT",
+              "formula": "[SalesAndProd_MAT1/Product Status]"
+            },
+            {
+              "id": "TgT7txTiSc",
+              "formula": "[SalesAndProd_MAT1/Product Notes]"
+            },
+            {
+              "id": "buaJGOlLv1",
+              "formula": "[SalesAndProd_MAT1/Updated At]"
+            },
+            {
+              "id": "yDmRM29FXG",
+              "formula": "[SalesAndProd_MAT1/Updated By]"
+            },
+            {
+              "id": "IMBVjJA8Hu",
+              "formula": "[SalesAndProd_MAT1/Proposed Price]"
+            },
+            {
+              "id": "QCkqpc6kMx",
+              "formula": "[d_customer/Cust Key]"
+            },
+            {
+              "id": "QpV-BewVwM",
+              "formula": "[d_customer/Cust Name]"
+            },
+            {
+              "id": "g8o_F6SPzb",
+              "formula": "[d_customer/Cust Address]"
+            },
+            {
+              "id": "-s2QcsgAdv",
+              "formula": "[d_customer/Cust City]"
+            },
+            {
+              "id": "Z1o3OCAaub",
+              "formula": "[d_customer/Cust State]"
+            },
+            {
+              "id": "SWJssBAPEu",
+              "formula": "[d_customer/Cust Zip Code]"
+            },
+            {
+              "id": "Oh5kLTHEKf",
+              "formula": "[d_customer/Cust County]"
+            },
+            {
+              "id": "f2Va62dB1J",
+              "formula": "[d_customer/Cust Region]"
+            },
+            {
+              "id": "455c8GbkLm",
+              "formula": "[d_customer/Cust Since]"
+            },
+            {
+              "id": "A3dS-epCwV",
+              "formula": "[d_customer/Cust Type]"
+            },
+            {
+              "id": "Ycjd52APJO",
+              "formula": "[d_customer/Cust Gender]"
+            },
+            {
+              "id": "q4f5YNhKxJ",
+              "formula": "[d_customer/Cust Age]"
+            },
+            {
+              "id": "sGPp69eTpt",
+              "formula": "[d_customer/Age Group]"
+            },
+            {
+              "id": "PZ7DRMw78R",
+              "formula": "[d_customer/Civil Status]"
+            },
+            {
+              "id": "D3hpS2LZgm",
+              "formula": "[d_customer/Loyalty Program]"
+            },
+            {
+              "id": "JuRra2UFcP",
+              "formula": "[d_customer/Cust Json Field]"
+            },
+            {
+              "id": "BHhjYmOKbC",
+              "formula": "[d_customer/Updated At]"
+            },
+            {
+              "id": "H7hSy6G1uL",
+              "formula": "[d_customer/Updated By]"
+            }
+          ],
+          "name": "MAT1_CustomerJoin",
+          "order": [
+            "Odg4a4s013",
+            "FOLPQJSL8_",
+            "im11bAXRPL",
+            "92i65PRCin",
+            "T9A1_2kyF3",
+            "B296VfPnf1",
+            "rQq3xio5tV",
+            "kLbQWftLXA",
+            "4wB_spJ0Xr",
+            "LHceFCOr8g",
+            "ZV0mKngsiN",
+            "VDoNmnC3ij",
+            "478C56wQKQ",
+            "-YoUNf1Euf",
+            "I-5zmX_PTL",
+            "0l_VMPFbAv",
+            "0R43V0nmGA",
+            "t4NV-Rxkuj",
+            "-ff8rFbUNv",
+            "9mb9B2or3P",
+            "km76ngrGyK",
+            "WIehqFqvxR",
+            "MrZ4cXnnKe",
+            "FhsJWbYJYD",
+            "iPXocdXYz7",
+            "4Nb2VTp15L",
+            "ntOVZxgryp",
+            "Esd5ks0AMH",
+            "sWIKlwZuVx",
+            "-lpmGIXF5n",
+            "H6bUwt8uPC",
+            "WjBxNalcMT",
+            "TgT7txTiSc",
+            "buaJGOlLv1",
+            "yDmRM29FXG",
+            "IMBVjJA8Hu",
+            "QCkqpc6kMx",
+            "QpV-BewVwM",
+            "g8o_F6SPzb",
+            "-s2QcsgAdv",
+            "Z1o3OCAaub",
+            "SWJssBAPEu",
+            "Oh5kLTHEKf",
+            "f2Va62dB1J",
+            "455c8GbkLm",
+            "A3dS-epCwV",
+            "Ycjd52APJO",
+            "q4f5YNhKxJ",
+            "sGPp69eTpt",
+            "PZ7DRMw78R",
+            "D3hpS2LZgm",
+            "JuRra2UFcP",
+            "BHhjYmOKbC",
+            "H7hSy6G1uL"
+          ]
+        },
+        {
+          "id": "BMhx7kvZl-",
+          "kind": "table",
+          "source": {
+            "elementId": "4VWXyTI2xv",
+            "kind": "table"
+          },
+          "columns": [
+            {
+              "id": "eOzpjT3Spb",
+              "formula": "[MAT1_CustomerJoin/Order Number]"
+            },
+            {
+              "id": "GzBVMpOwLW",
+              "formula": "[MAT1_CustomerJoin/Date]"
+            },
+            {
+              "id": "J1tUwyeOtw",
+              "formula": "[MAT1_CustomerJoin/Sku Number]"
+            },
+            {
+              "id": "As7HU6Omsi",
+              "formula": "[MAT1_CustomerJoin/Quantity]"
+            },
+            {
+              "id": "P07sa79pAK",
+              "formula": "[MAT1_CustomerJoin/Cost]"
+            },
+            {
+              "id": "MVu5360PDI",
+              "formula": "[MAT1_CustomerJoin/Price]"
+            },
+            {
+              "id": "Gq38s88_VH",
+              "formula": "[MAT1_CustomerJoin/Product Type]"
+            },
+            {
+              "id": "v_HP63TTje",
+              "formula": "[MAT1_CustomerJoin/Product Family]"
+            },
+            {
+              "id": "s9KfzxZf0E",
+              "formula": "[MAT1_CustomerJoin/Product Line]"
+            },
+            {
+              "id": "IUR7cpX_wQ",
+              "formula": "[MAT1_CustomerJoin/Brand]"
+            },
+            {
+              "id": "g8r9wHfFrZ",
+              "formula": "[MAT1_CustomerJoin/Product Name]"
+            },
+            {
+              "id": "WBrK6L-FMI",
+              "formula": "[MAT1_CustomerJoin/Store Name]"
+            },
+            {
+              "id": "3X7koCzmX8",
+              "formula": "[MAT1_CustomerJoin/Store Key]"
+            },
+            {
+              "id": "RhtavYM79z",
+              "formula": "[MAT1_CustomerJoin/Store Region]"
+            },
+            {
+              "id": "QlkIaI0UuZ",
+              "formula": "[MAT1_CustomerJoin/Store State]"
+            },
+            {
+              "id": "Ie_bPpjqC7",
+              "formula": "[MAT1_CustomerJoin/Store City]"
+            },
+            {
+              "id": "CPPIsy7xvH",
+              "formula": "[MAT1_CustomerJoin/Store Zip Code]"
+            },
+            {
+              "id": "RXGgvb5QWo",
+              "formula": "[MAT1_CustomerJoin/Store Latitude]"
+            },
+            {
+              "id": "uNzlSdGuR9",
+              "formula": "[MAT1_CustomerJoin/Store Longitude]"
+            },
+            {
+              "id": "uSqFqJZTt7",
+              "formula": "[MAT1_CustomerJoin/Cust Key]"
+            },
+            {
+              "id": "AqNlnEVEOM",
+              "formula": "[MAT1_CustomerJoin/Customer Name]"
+            },
+            {
+              "id": "u7Sl8_ki_g",
+              "formula": "[MAT1_CustomerJoin/Cust Json]"
+            },
+            {
+              "id": "z90Qniiwc0",
+              "formula": "[MAT1_CustomerJoin/Product Key]"
+            },
+            {
+              "id": "y_zVv3vWsj",
+              "formula": "[MAT1_CustomerJoin/Product Name (d_product)]"
+            },
+            {
+              "id": "PhGnXkRgWP",
+              "formula": "[MAT1_CustomerJoin/Product Type (d_product)]"
+            },
+            {
+              "id": "FJIrWyOvqW",
+              "formula": "[MAT1_CustomerJoin/Product Family (d_product)]"
+            },
+            {
+              "id": "VD0NiTZZ1e",
+              "formula": "[MAT1_CustomerJoin/Product Line (d_product)]"
+            },
+            {
+              "id": "7Uyp8XUPJe",
+              "formula": "[MAT1_CustomerJoin/Product Group]"
+            },
+            {
+              "id": "1NtC_cBz2T",
+              "formula": "[MAT1_CustomerJoin/Product Description]"
+            },
+            {
+              "id": "nm7vUgszpf",
+              "formula": "[MAT1_CustomerJoin/Sku Number (d_product)]"
+            },
+            {
+              "id": "EVU_o1Y02T",
+              "formula": "[MAT1_CustomerJoin/Price (d_product)]"
+            },
+            {
+              "id": "kNyk20L19t",
+              "formula": "[MAT1_CustomerJoin/Product Status]"
+            },
+            {
+              "id": "ZLTtnCgNik",
+              "formula": "[MAT1_CustomerJoin/Product Notes]"
+            },
+            {
+              "id": "AQx0PY6ITV",
+              "formula": "[MAT1_CustomerJoin/Updated At]"
+            },
+            {
+              "id": "6XNmftOk-N",
+              "formula": "[MAT1_CustomerJoin/Updated By]"
+            },
+            {
+              "id": "w8M3YWNMQt",
+              "formula": "[MAT1_CustomerJoin/Proposed Price]"
+            },
+            {
+              "id": "hqq2PaleZT",
+              "formula": "[MAT1_CustomerJoin/Cust Key (d_customer)]"
+            },
+            {
+              "id": "5smKPKmSaW",
+              "formula": "[MAT1_CustomerJoin/Cust Name]"
+            },
+            {
+              "id": "jgS_qejsl5",
+              "formula": "[MAT1_CustomerJoin/Cust Address]"
+            },
+            {
+              "id": "tJ4tyKSgHT",
+              "formula": "[MAT1_CustomerJoin/Cust City]"
+            },
+            {
+              "id": "DFPUE75Un0",
+              "formula": "[MAT1_CustomerJoin/Cust State]"
+            },
+            {
+              "id": "eT0qnHaxBz",
+              "formula": "[MAT1_CustomerJoin/Cust Zip Code]"
+            },
+            {
+              "id": "p54wZZG2db",
+              "formula": "[MAT1_CustomerJoin/Cust County]"
+            },
+            {
+              "id": "8JuzzR9iUK",
+              "formula": "[MAT1_CustomerJoin/Cust Region]"
+            },
+            {
+              "id": "NIPer4H6hH",
+              "formula": "[MAT1_CustomerJoin/Cust Since]"
+            },
+            {
+              "id": "w-2Bu2Yrpn",
+              "formula": "[MAT1_CustomerJoin/Cust Type]"
+            },
+            {
+              "id": "fSre-qOkq7",
+              "formula": "[MAT1_CustomerJoin/Cust Gender]"
+            },
+            {
+              "id": "dGnNWdz-e-",
+              "formula": "[MAT1_CustomerJoin/Cust Age]"
+            },
+            {
+              "id": "bvAxRKs8Yz",
+              "formula": "[MAT1_CustomerJoin/Age Group]"
+            },
+            {
+              "id": "-L_igKoVkZ",
+              "formula": "[MAT1_CustomerJoin/Civil Status]"
+            },
+            {
+              "id": "HQOsKbYKjn",
+              "formula": "[MAT1_CustomerJoin/Loyalty Program]"
+            },
+            {
+              "id": "cEh3rXRz6P",
+              "formula": "[MAT1_CustomerJoin/Cust Json Field]"
+            },
+            {
+              "id": "PLcCBZuh_5",
+              "formula": "[MAT1_CustomerJoin/Updated At (d_customer)]"
+            },
+            {
+              "id": "LosQcrsy8n",
+              "formula": "[MAT1_CustomerJoin/Updated By (d_customer)]"
+            }
+          ],
+          "name": "MAT2_FinalTable",
+          "order": [
+            "eOzpjT3Spb",
+            "GzBVMpOwLW",
+            "J1tUwyeOtw",
+            "As7HU6Omsi",
+            "P07sa79pAK",
+            "MVu5360PDI",
+            "Gq38s88_VH",
+            "v_HP63TTje",
+            "s9KfzxZf0E",
+            "IUR7cpX_wQ",
+            "g8r9wHfFrZ",
+            "WBrK6L-FMI",
+            "3X7koCzmX8",
+            "RhtavYM79z",
+            "QlkIaI0UuZ",
+            "Ie_bPpjqC7",
+            "CPPIsy7xvH",
+            "RXGgvb5QWo",
+            "uNzlSdGuR9",
+            "uSqFqJZTt7",
+            "AqNlnEVEOM",
+            "u7Sl8_ki_g",
+            "z90Qniiwc0",
+            "y_zVv3vWsj",
+            "PhGnXkRgWP",
+            "FJIrWyOvqW",
+            "VD0NiTZZ1e",
+            "7Uyp8XUPJe",
+            "1NtC_cBz2T",
+            "nm7vUgszpf",
+            "EVU_o1Y02T",
+            "kNyk20L19t",
+            "ZLTtnCgNik",
+            "AQx0PY6ITV",
+            "6XNmftOk-N",
+            "w8M3YWNMQt",
+            "hqq2PaleZT",
+            "5smKPKmSaW",
+            "jgS_qejsl5",
+            "tJ4tyKSgHT",
+            "DFPUE75Un0",
+            "eT0qnHaxBz",
+            "p54wZZG2db",
+            "8JuzzR9iUK",
+            "NIPer4H6hH",
+            "w-2Bu2Yrpn",
+            "fSre-qOkq7",
+            "dGnNWdz-e-",
+            "bvAxRKs8Yz",
+            "-L_igKoVkZ",
+            "HQOsKbYKjn",
+            "cEh3rXRz6P",
+            "PLcCBZuh_5",
+            "LosQcrsy8n"
+          ]
+        }
+      ]
+    }
+  ]
+}
