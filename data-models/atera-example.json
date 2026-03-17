@@ -1,0 +1,341 @@
+{
+  "dataModelId": "9744661d-1542-4092-bbd5-6aed80ec8c81",
+  "name": "Atera Example",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Atera-Example-4Br6brtG5Z9zs208j5gdwt",
+  "documentVersion": 10,
+  "latestDocumentVersion": 10,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "55359ac2-d3d0-40f4-97e7-eca79d0b9f2a",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2025-11-25T08:14:06.551Z",
+  "updatedAt": "2025-11-28T09:38:14.918Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "rEfuxNSaSM",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "hqF_KAfwi7",
+          "kind": "table",
+          "source": {
+            "kind": "join",
+            "joins": [
+              {
+                "left": {
+                  "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "RETAIL",
+                    "PLUGS_ELECTRONICS",
+                    "F_SALES"
+                  ]
+                },
+                "right": {
+                  "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "RETAIL",
+                    "PLUGS_ELECTRONICS",
+                    "F_POINT_OF_SALE"
+                  ]
+                },
+                "columns": [
+                  {
+                    "left": "[Order Number]",
+                    "right": "[Order Number]"
+                  }
+                ],
+                "joinType": "inner"
+              }
+            ],
+            "primarySource": {
+              "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+              "kind": "warehouse-table",
+              "path": [
+                "RETAIL",
+                "PLUGS_ELECTRONICS",
+                "F_SALES"
+              ]
+            }
+          },
+          "columns": [
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/ORDER_NUMBER",
+              "formula": "[F_SALES/Order Number]"
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/STORE_KEY",
+              "formula": "[F_SALES/Store Key]",
+              "hidden": true
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/TRANSACTION_TYPE",
+              "formula": "[F_SALES/Transaction Type]"
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/DATE",
+              "formula": "[F_SALES/Date]"
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/PURCHASE_METHOD",
+              "formula": "[F_SALES/Purchase Method]"
+            },
+            {
+              "id": "cThAWRNME5",
+              "formula": "[F_POINT_OF_SALE/Product Key]",
+              "hidden": true
+            },
+            {
+              "id": "pGLL3XxYJg",
+              "formula": "[F_POINT_OF_SALE/Sales Quantity]"
+            },
+            {
+              "id": "bgamb-X18G",
+              "formula": "[F_POINT_OF_SALE/Sales Amount]"
+            },
+            {
+              "id": "E_J-veFTae",
+              "formula": "If([Store City (Dim Store)] = \"Folsom\", [Sales Amount])",
+              "name": "Folsom Sales"
+            },
+            {
+              "id": "HLSBqZsAfW",
+              "formula": "Lookup([Dim Store/Store City], [Store Key], [Dim Store/Store Key])"
+            }
+          ],
+          "name": "Sales",
+          "metrics": [
+            {
+              "id": "B6oFSy-j8s",
+              "formula": "SumIf([Sales Quantity], [Store City (Dim Store)] = \"Detroit\")",
+              "name": "Quantity (Detroit)"
+            },
+            {
+              "id": "y6G-Duwq5U",
+              "formula": "Sum([Sales Quantity])",
+              "name": "Qty"
+            }
+          ],
+          "relationships": [
+            {
+              "id": "kwt46ixwnF",
+              "targetElementId": "jnpHOVeZpi",
+              "keys": [
+                {
+                  "sourceColumnId": "cThAWRNME5",
+                  "targetColumnId": "lYjdIlVPgY"
+                }
+              ]
+            },
+            {
+              "id": "vwqaHjx3J3",
+              "targetElementId": "LgeIrLbSEQ",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-3mVA6mXwUOGgVJIdSBQtkr/STORE_KEY",
+                  "targetColumnId": "I68Rdh7IWg"
+                }
+              ]
+            }
+          ],
+          "filters": [
+            {
+              "id": "q4lnMINGP3",
+              "columnId": "E_J-veFTae",
+              "kind": "list",
+              "mode": "include",
+              "values": []
+            }
+          ],
+          "order": [
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/ORDER_NUMBER",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/STORE_KEY",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/TRANSACTION_TYPE",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/DATE",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/PURCHASE_METHOD",
+            "cThAWRNME5",
+            "pGLL3XxYJg",
+            "bgamb-X18G",
+            "E_J-veFTae",
+            "HLSBqZsAfW"
+          ]
+        },
+        {
+          "kind": "control",
+          "controlId": "Product-Family",
+          "id": "X22bAzyFAo",
+          "filters": [
+            {
+              "source": {
+                "kind": "warehouse-table",
+                "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+                "path": [
+                  "RETAIL",
+                  "PLUGS_ELECTRONICS",
+                  "D_PRODUCT"
+                ]
+              },
+              "columnId": "PRODUCT_FAMILY"
+            }
+          ],
+          "controlType": "list",
+          "mode": "include",
+          "selectionMode": "multiple",
+          "values": [
+            "Audio"
+          ],
+          "source": {
+            "kind": "source",
+            "source": {
+              "kind": "warehouse-table",
+              "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+              "path": [
+                "RETAIL",
+                "PLUGS_ELECTRONICS",
+                "D_PRODUCT"
+              ]
+            },
+            "columnId": "PRODUCT_FAMILY"
+          }
+        },
+        {
+          "id": "jnpHOVeZpi",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "RETAIL",
+              "PLUGS_ELECTRONICS",
+              "D_PRODUCT"
+            ]
+          },
+          "columns": [
+            {
+              "id": "lYjdIlVPgY",
+              "formula": "[D_PRODUCT/Product Key]",
+              "hidden": true
+            },
+            {
+              "id": "uACoFpzOsa",
+              "formula": "[D_PRODUCT/Product Name]"
+            },
+            {
+              "id": "UQzZx29NZ7",
+              "formula": "[D_PRODUCT/Product Type]"
+            },
+            {
+              "id": "fM48VikbXJ",
+              "formula": "[D_PRODUCT/Product Group]"
+            },
+            {
+              "id": "wdF11zIVbp",
+              "formula": "[D_PRODUCT/Product Line]"
+            },
+            {
+              "id": "sTdUOo1mGv",
+              "formula": "[D_PRODUCT/Product Description]"
+            },
+            {
+              "id": "eGwp_SuQqc",
+              "formula": "[D_PRODUCT/Sku Number]"
+            },
+            {
+              "id": "0vGFhP8L-A",
+              "formula": "[D_PRODUCT/Price]"
+            },
+            {
+              "id": "WL_PgE38y6",
+              "formula": "[D_PRODUCT/Product Status]"
+            },
+            {
+              "id": "jgL8EHr1Ty",
+              "formula": "[D_PRODUCT/Product Notes]"
+            },
+            {
+              "id": "c01lG5x_To",
+              "formula": "[D_PRODUCT/Updated At]"
+            },
+            {
+              "id": "QEgXe06xma",
+              "formula": "[D_PRODUCT/Updated By]"
+            },
+            {
+              "id": "vEQIcJc-i1",
+              "formula": "[D_PRODUCT/Proposed Price]"
+            },
+            {
+              "id": "c_GYXM8VGJ",
+              "formula": "[D_PRODUCT/Product Family]"
+            }
+          ],
+          "name": "Dim Product",
+          "order": [
+            "lYjdIlVPgY",
+            "uACoFpzOsa",
+            "UQzZx29NZ7",
+            "fM48VikbXJ",
+            "wdF11zIVbp",
+            "sTdUOo1mGv",
+            "eGwp_SuQqc",
+            "0vGFhP8L-A",
+            "WL_PgE38y6",
+            "jgL8EHr1Ty",
+            "c01lG5x_To",
+            "QEgXe06xma",
+            "vEQIcJc-i1",
+            "c_GYXM8VGJ"
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "LgeIrLbSEQ",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "RETAIL",
+              "PLUGS_ELECTRONICS",
+              "D_STORE"
+            ]
+          },
+          "columns": [
+            {
+              "id": "I68Rdh7IWg",
+              "formula": "[D_STORE/Store Key]",
+              "hidden": true
+            },
+            {
+              "id": "B-aMSNBpPI",
+              "formula": "[D_STORE/Store Name]"
+            },
+            {
+              "id": "8WV40_uGXb",
+              "formula": "[D_STORE/Store City]"
+            },
+            {
+              "id": "SRTv6n1Y8F",
+              "formula": "[D_STORE/Store County]"
+            },
+            {
+              "id": "iXiP694UgG",
+              "formula": "[D_STORE/Store State]"
+            }
+          ],
+          "name": "Dim Store",
+          "order": [
+            "I68Rdh7IWg",
+            "B-aMSNBpPI",
+            "8WV40_uGXb",
+            "SRTv6n1Y8F",
+            "iXiP694UgG"
+          ],
+          "visibleAsSource": false
+        }
+      ]
+    }
+  ]
+}
