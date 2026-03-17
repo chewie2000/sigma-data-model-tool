@@ -1,0 +1,201 @@
+{
+  "dataModelId": "3dc4280e-ef80-4d42-b7fe-6673d7e3c214",
+  "name": "fanout",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/fanout-1SyaTpVFEAVrOpINgbqO0I",
+  "documentVersion": 3,
+  "latestDocumentVersion": 3,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-03-04T18:06:21.222Z",
+  "updatedAt": "2026-03-04T19:56:14.733Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "iFhopUfSoB",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "B9iUR-Oqcr",
+          "kind": "table",
+          "source": {
+            "connectionId": "9f71228a-a323-4b8e-9b33-6ad4fd1685ae",
+            "kind": "warehouse-table",
+            "path": [
+              "MARKO",
+              "PUBLIC",
+              "DIM_AGENTS"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-6vprqmZb7hDrE5YEEUlBgI/AGENT_ID",
+              "formula": "[DIM_AGENTS/Agent Id]"
+            },
+            {
+              "id": "inode-6vprqmZb7hDrE5YEEUlBgI/AGENT_NAME",
+              "formula": "[DIM_AGENTS/Agent Name]"
+            },
+            {
+              "id": "inode-6vprqmZb7hDrE5YEEUlBgI/HIRE_DATE",
+              "formula": "[DIM_AGENTS/Hire Date]"
+            },
+            {
+              "id": "inode-6vprqmZb7hDrE5YEEUlBgI/REGION",
+              "formula": "[DIM_AGENTS/Region]"
+            }
+          ],
+          "relationships": [
+            {
+              "id": "OmsHYqax-O",
+              "targetElementId": "DH8HhzFg78",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-6vprqmZb7hDrE5YEEUlBgI/AGENT_ID",
+                  "targetColumnId": "inode-5sfcQZ4fWt9QVfrWM6FzqJ/AGENT_ID"
+                }
+              ]
+            }
+          ],
+          "order": [
+            "inode-6vprqmZb7hDrE5YEEUlBgI/AGENT_ID",
+            "inode-6vprqmZb7hDrE5YEEUlBgI/AGENT_NAME",
+            "inode-6vprqmZb7hDrE5YEEUlBgI/HIRE_DATE",
+            "inode-6vprqmZb7hDrE5YEEUlBgI/REGION"
+          ]
+        },
+        {
+          "id": "BUU6C8ZX4H",
+          "kind": "table",
+          "source": {
+            "connectionId": "9f71228a-a323-4b8e-9b33-6ad4fd1685ae",
+            "kind": "warehouse-table",
+            "path": [
+              "MARKO",
+              "PUBLIC",
+              "DIM_GROUPS"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-9n7v8wHSWOXdUJU1gPMZB/GROUP_ID",
+              "formula": "[DIM_GROUPS/Group Id]"
+            },
+            {
+              "id": "inode-9n7v8wHSWOXdUJU1gPMZB/GROUP_NAME",
+              "formula": "[DIM_GROUPS/Group Name]"
+            },
+            {
+              "id": "inode-9n7v8wHSWOXdUJU1gPMZB/DEPARTMENT",
+              "formula": "[DIM_GROUPS/Department]"
+            }
+          ],
+          "relationships": [
+            {
+              "id": "iI0lHbwRJD",
+              "targetElementId": "DH8HhzFg78",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-9n7v8wHSWOXdUJU1gPMZB/GROUP_ID",
+                  "targetColumnId": "inode-5sfcQZ4fWt9QVfrWM6FzqJ/GROUP_ID"
+                }
+              ]
+            }
+          ],
+          "order": [
+            "inode-9n7v8wHSWOXdUJU1gPMZB/GROUP_ID",
+            "inode-9n7v8wHSWOXdUJU1gPMZB/GROUP_NAME",
+            "inode-9n7v8wHSWOXdUJU1gPMZB/DEPARTMENT"
+          ]
+        },
+        {
+          "id": "DH8HhzFg78",
+          "kind": "table",
+          "source": {
+            "connectionId": "9f71228a-a323-4b8e-9b33-6ad4fd1685ae",
+            "kind": "warehouse-table",
+            "path": [
+              "MARKO",
+              "PUBLIC",
+              "V_MAP_AGENT_GROUP_WEIGHTED"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-5sfcQZ4fWt9QVfrWM6FzqJ/AGENT_ID",
+              "formula": "[V_MAP_AGENT_GROUP_WEIGHTED/Agent Id]"
+            },
+            {
+              "id": "inode-5sfcQZ4fWt9QVfrWM6FzqJ/GROUP_ID",
+              "formula": "[V_MAP_AGENT_GROUP_WEIGHTED/Group Id]"
+            },
+            {
+              "id": "inode-5sfcQZ4fWt9QVfrWM6FzqJ/ALLOCATION_WEIGHT",
+              "formula": "[V_MAP_AGENT_GROUP_WEIGHTED/Allocation Weight]"
+            }
+          ],
+          "relationships": [
+            {
+              "id": "BmjJkhWN1y",
+              "targetElementId": "dwXn9LZtu5",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-5sfcQZ4fWt9QVfrWM6FzqJ/AGENT_ID",
+                  "targetColumnId": "inode-6MqcIq6dZXyWEcwsWz5vs2/AGENT_ID"
+                }
+              ]
+            }
+          ],
+          "order": [
+            "inode-5sfcQZ4fWt9QVfrWM6FzqJ/AGENT_ID",
+            "inode-5sfcQZ4fWt9QVfrWM6FzqJ/GROUP_ID",
+            "inode-5sfcQZ4fWt9QVfrWM6FzqJ/ALLOCATION_WEIGHT"
+          ]
+        },
+        {
+          "id": "dwXn9LZtu5",
+          "kind": "table",
+          "source": {
+            "connectionId": "9f71228a-a323-4b8e-9b33-6ad4fd1685ae",
+            "kind": "warehouse-table",
+            "path": [
+              "MARKO",
+              "PUBLIC",
+              "FACT_TRANSACTIONS"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-6MqcIq6dZXyWEcwsWz5vs2/TXN_ID",
+              "formula": "[FACT_TRANSACTIONS/Txn Id]"
+            },
+            {
+              "id": "inode-6MqcIq6dZXyWEcwsWz5vs2/AGENT_ID",
+              "formula": "[FACT_TRANSACTIONS/Agent Id]"
+            },
+            {
+              "id": "inode-6MqcIq6dZXyWEcwsWz5vs2/AMOUNT",
+              "formula": "[FACT_TRANSACTIONS/Amount]"
+            },
+            {
+              "id": "inode-6MqcIq6dZXyWEcwsWz5vs2/TXN_DATE",
+              "formula": "[FACT_TRANSACTIONS/Txn Date]"
+            },
+            {
+              "id": "inode-6MqcIq6dZXyWEcwsWz5vs2/CURRENCY",
+              "formula": "[FACT_TRANSACTIONS/Currency]"
+            }
+          ],
+          "order": [
+            "inode-6MqcIq6dZXyWEcwsWz5vs2/TXN_ID",
+            "inode-6MqcIq6dZXyWEcwsWz5vs2/AGENT_ID",
+            "inode-6MqcIq6dZXyWEcwsWz5vs2/AMOUNT",
+            "inode-6MqcIq6dZXyWEcwsWz5vs2/TXN_DATE",
+            "inode-6MqcIq6dZXyWEcwsWz5vs2/CURRENCY"
+          ]
+        }
+      ]
+    }
+  ]
+}
