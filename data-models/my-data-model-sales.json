@@ -1,0 +1,60 @@
+{
+  "dataModelId": "2b5aedc9-f24d-4ce1-8ce5-d7b1585bc5b7",
+  "name": "My Data Model  Sales",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/My-Data-Model-Sales-1jOdVCowUMNHGdBqALWnA3",
+  "documentVersion": 1,
+  "latestDocumentVersion": 1,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "22c49487-49b2-4410-8a00-badfa9fdd94a",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-02-05T14:46:40.790Z",
+  "updatedAt": "2026-02-05T14:46:40.790Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "ZnNQ5wCvEt",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "4r6FTp2Fqf",
+          "kind": "table",
+          "source": {
+            "dataModelId": "d140ccc2-516a-403c-ac8d-0b9c8b5196c5",
+            "elementId": "w3b23rTjLe",
+            "kind": "data-model"
+          },
+          "columns": [
+            {
+              "id": "ja_JndvoEK",
+              "formula": "[F_POINT_OF_SALE/Order Number]"
+            },
+            {
+              "id": "v19tkMbbER",
+              "formula": "[F_POINT_OF_SALE/Product Key]"
+            },
+            {
+              "id": "icBl0wE5Df",
+              "formula": "[F_POINT_OF_SALE/Sales Quantity]"
+            },
+            {
+              "id": "Bbj630mj2C",
+              "formula": "[F_POINT_OF_SALE/Sales Amount]"
+            },
+            {
+              "id": "mD5ppg3ReW",
+              "formula": "[F_POINT_OF_SALE/Cost Amount]"
+            }
+          ],
+          "order": [
+            "ja_JndvoEK",
+            "v19tkMbbER",
+            "icBl0wE5Df",
+            "Bbj630mj2C",
+            "mD5ppg3ReW"
+          ]
+        }
+      ]
+    }
+  ]
+}
