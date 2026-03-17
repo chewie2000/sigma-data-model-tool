@@ -1,0 +1,86 @@
+{
+  "dataModelId": "4c85391e-db62-4cb0-9062-bbb707cb39a4",
+  "name": "Watch Model (CS EMEA)",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Watch-Model-CS-EMEA-2koiBa4sG8FnidFnD8ODnC",
+  "documentVersion": 3,
+  "latestDocumentVersion": 3,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "1f1377e9-131e-4ce0-9f23-67f80de984dc",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-01-27T15:08:32.644Z",
+  "updatedAt": "2026-01-27T15:25:58.679Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "ETLe6AduBj",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "ILkfeucqv4",
+          "kind": "table",
+          "source": {
+            "connectionId": "a3a393ca-2691-446a-b72a-778f37f25021",
+            "kind": "warehouse-table",
+            "path": [
+              "CSEMEA",
+              "WATCHES",
+              "FACT_SALES"
+            ]
+          },
+          "columns": [
+            {
+              "id": "0eAi7aR4mn",
+              "formula": "[FACT_SALES/Transaction Id]"
+            },
+            {
+              "id": "Y5xjjlBoXt",
+              "formula": "[FACT_SALES/Sale Timestamp]"
+            },
+            {
+              "id": "p1FwLqMBFM",
+              "formula": "[FACT_SALES/Store Id]"
+            },
+            {
+              "id": "gtb9dkQVJh",
+              "formula": "[FACT_SALES/Product Id]"
+            },
+            {
+              "id": "LoqwYGWdQh",
+              "formula": "[FACT_SALES/Customer Id]"
+            },
+            {
+              "id": "RZQWnOnwLP",
+              "formula": "[FACT_SALES/Quantity]"
+            },
+            {
+              "id": "Sm9cQqv8KS",
+              "formula": "[FACT_SALES/Amount]"
+            },
+            {
+              "id": "KO7HrhqZx5",
+              "formula": "[FACT_SALES/Appointment Id]"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "5fk7dz-jnF",
+              "formula": "Sum([Amount])",
+              "name": "Sales"
+            }
+          ],
+          "order": [
+            "0eAi7aR4mn",
+            "Y5xjjlBoXt",
+            "p1FwLqMBFM",
+            "gtb9dkQVJh",
+            "LoqwYGWdQh",
+            "RZQWnOnwLP",
+            "Sm9cQqv8KS",
+            "KO7HrhqZx5"
+          ]
+        }
+      ]
+    }
+  ]
+}
