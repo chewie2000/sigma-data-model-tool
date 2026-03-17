@@ -1,0 +1,160 @@
+{
+  "dataModelId": "659fd034-4b62-46bd-929e-e19b13f98b13",
+  "name": "Ebury Example",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Ebury-Example-35Lg756lJfANJ6sz8UwpuH",
+  "documentVersion": 5,
+  "latestDocumentVersion": 5,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-02-19T15:11:59.805Z",
+  "updatedAt": "2026-02-19T15:22:28.417Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "x4rwNHOS6R",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "ISXS2bm5Ym",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "RETAIL",
+              "PLUGS_ELECTRONICS",
+              "PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/ORDER_NUMBER",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Order Number]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/DATE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/SKU_NUMBER",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Sku Number]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/QUANTITY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Quantity]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRICE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Price]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_TYPE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Type]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_FAMILY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Family]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_LINE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Line]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/BRAND",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Brand]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_NAME",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Name]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_NAME",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Name]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_KEY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Key]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_REGION",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Region]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_STATE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store State]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_CITY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store City]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_ZIP_CODE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Zip Code]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_LATITUDE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Latitude]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_LONGITUDE",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Longitude]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/CUST_KEY",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cust Key]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/CUSTOMER_NAME",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Customer Name]"
+            },
+            {
+              "id": "inode-2ZNbDBalxsk5fxMYhCixgR/CUST_JSON",
+              "formula": "[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cust Json]"
+            },
+            {
+              "id": "fWJdXpJRnU",
+              "formula": "[Price] * [Quantity]",
+              "name": "MarkSales"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "t-x3n9i3wF",
+              "formula": "Count()"
+            },
+            {
+              "id": "QdmwdY2-8u",
+              "formula": "Sum([Cost])"
+            }
+          ],
+          "order": [
+            "inode-2ZNbDBalxsk5fxMYhCixgR/ORDER_NUMBER",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/DATE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/SKU_NUMBER",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/QUANTITY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRICE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_TYPE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_FAMILY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_LINE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/BRAND",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/PRODUCT_NAME",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_NAME",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_KEY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_REGION",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_STATE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_CITY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_ZIP_CODE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_LATITUDE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/STORE_LONGITUDE",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/CUST_KEY",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/CUSTOMER_NAME",
+            "inode-2ZNbDBalxsk5fxMYhCixgR/CUST_JSON",
+            "fWJdXpJRnU"
+          ]
+        }
+      ]
+    }
+  ]
+}
