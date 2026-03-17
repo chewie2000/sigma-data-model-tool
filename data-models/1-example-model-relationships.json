@@ -2,18 +2,18 @@
   "dataModelId": "affc4f2e-2597-4921-8c3d-89e8374e6d2d",
   "name": "1. Example Model - Relationships",
   "url": "https://app.sigmacomputing.com/marko-eutest/data-model/1-Example-Model-Relationships-5m4XHmCqrmQYZws4rqGTdX",
-  "documentVersion": 3,
-  "latestDocumentVersion": 3,
+  "documentVersion": 4,
+  "latestDocumentVersion": 4,
   "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
   "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
   "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
   "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
   "createdAt": "2026-03-17T16:47:10.668Z",
-  "updatedAt": "2026-03-17T17:25:39.121Z",
+  "updatedAt": "2026-03-17T21:10:08.678Z",
   "schemaVersion": 1,
   "pages": [
     {
-      "id": "vQom85PJwR",
+      "id": "Zf1fes6ocB",
       "name": "Page 1",
       "elements": [
         {
@@ -34,8 +34,12 @@
               "formula": "[TRIP/Id]"
             },
             {
+              "id": "inode-7C0k8oH45vAxlQBm762T6z/DURATION",
+              "formula": "[TRIP/Duration1]"
+            },
+            {
               "id": "inode-7C0k8oH45vAxlQBm762T6z/START_DATE",
-              "formula": "[TRIP/Start Date1]"
+              "formula": "[TRIP/Start Date]"
             },
             {
               "id": "inode-7C0k8oH45vAxlQBm762T6z/START_STATION_NAME",
@@ -84,6 +88,7 @@
           ],
           "order": [
             "inode-7C0k8oH45vAxlQBm762T6z/ID",
+            "inode-7C0k8oH45vAxlQBm762T6z/DURATION",
             "inode-7C0k8oH45vAxlQBm762T6z/START_DATE",
             "inode-7C0k8oH45vAxlQBm762T6z/START_STATION_NAME",
             "inode-7C0k8oH45vAxlQBm762T6z/START_STATION_ID",
