@@ -1,0 +1,171 @@
+{
+  "dataModelId": "d140ccc2-516a-403c-ac8d-0b9c8b5196c5",
+  "name": "Another Model",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Another-Model-6mR0CfkTNKy3FONCLkLLlb",
+  "documentVersion": 4,
+  "latestDocumentVersion": 4,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2025-11-11T16:38:53.295Z",
+  "updatedAt": "2026-01-21T20:25:18.189Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "62RnCZLytk",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "T_yVPLxM7s",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "RETAIL",
+              "PLUGS_ELECTRONICS",
+              "D_PRODUCT"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_KEY",
+              "formula": "[D_PRODUCT/Product Key]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NAME",
+              "formula": "[D_PRODUCT/Product Name]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_TYPE",
+              "formula": "[D_PRODUCT/Product Type]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_FAMILY",
+              "formula": "[D_PRODUCT/Product Family]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_LINE",
+              "formula": "[D_PRODUCT/Product Line]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_GROUP",
+              "formula": "[D_PRODUCT/Product Group]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_DESCRIPTION",
+              "formula": "[D_PRODUCT/Product Description]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/SKU_NUMBER",
+              "formula": "[D_PRODUCT/Sku Number]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRICE",
+              "formula": "[D_PRODUCT/Price]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_STATUS",
+              "formula": "[D_PRODUCT/Product Status]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NOTES",
+              "formula": "[D_PRODUCT/Product Notes]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/UPDATED_AT",
+              "formula": "[D_PRODUCT/Updated At]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/UPDATED_BY",
+              "formula": "[D_PRODUCT/Updated By]"
+            },
+            {
+              "id": "inode-66C3YFDLmOCT5iXeCz3wps/PROPOSED_PRICE",
+              "formula": "[D_PRODUCT/Proposed Price]"
+            }
+          ],
+          "order": [
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_KEY",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NAME",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_TYPE",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_FAMILY",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_LINE",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_GROUP",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_DESCRIPTION",
+            "inode-66C3YFDLmOCT5iXeCz3wps/SKU_NUMBER",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRICE",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_STATUS",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_NOTES",
+            "inode-66C3YFDLmOCT5iXeCz3wps/UPDATED_AT",
+            "inode-66C3YFDLmOCT5iXeCz3wps/UPDATED_BY",
+            "inode-66C3YFDLmOCT5iXeCz3wps/PROPOSED_PRICE"
+          ]
+        },
+        {
+          "id": "w3b23rTjLe",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "RETAIL",
+              "PLUGS_ELECTRONICS",
+              "F_POINT_OF_SALE"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-7vkCB7hA18oixMQReFJi8o/ORDER_NUMBER",
+              "formula": "[F_POINT_OF_SALE/Order Number]"
+            },
+            {
+              "id": "inode-7vkCB7hA18oixMQReFJi8o/PRODUCT_KEY",
+              "formula": "[F_POINT_OF_SALE/Product Key]"
+            },
+            {
+              "id": "inode-7vkCB7hA18oixMQReFJi8o/SALES_QUANTITY",
+              "formula": "[F_POINT_OF_SALE/Sales Quantity]"
+            },
+            {
+              "id": "inode-7vkCB7hA18oixMQReFJi8o/SALES_AMOUNT",
+              "formula": "[F_POINT_OF_SALE/Sales Amount]"
+            },
+            {
+              "id": "inode-7vkCB7hA18oixMQReFJi8o/COST_AMOUNT",
+              "formula": "[F_POINT_OF_SALE/Cost Amount]"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "4ZTqtuKnbs",
+              "formula": "Sum([Sales Amount]) - Sum([Cost Amount])",
+              "name": "Profit"
+            }
+          ],
+          "relationships": [
+            {
+              "id": "s3L4n9vD-Q",
+              "targetElementId": "T_yVPLxM7s",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-7vkCB7hA18oixMQReFJi8o/PRODUCT_KEY",
+                  "targetColumnId": "inode-66C3YFDLmOCT5iXeCz3wps/PRODUCT_KEY"
+                }
+              ],
+              "name": "FK_SALES__PRODUCT"
+            }
+          ],
+          "order": [
+            "inode-7vkCB7hA18oixMQReFJi8o/ORDER_NUMBER",
+            "inode-7vkCB7hA18oixMQReFJi8o/PRODUCT_KEY",
+            "inode-7vkCB7hA18oixMQReFJi8o/SALES_QUANTITY",
+            "inode-7vkCB7hA18oixMQReFJi8o/SALES_AMOUNT",
+            "inode-7vkCB7hA18oixMQReFJi8o/COST_AMOUNT"
+          ]
+        }
+      ]
+    }
+  ]
+}
