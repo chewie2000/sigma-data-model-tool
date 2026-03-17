@@ -1,0 +1,245 @@
+{
+  "dataModelId": "7c71be32-a2e6-49a7-9d07-06e83a2c79f9",
+  "name": "MultiSource and Filter",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/MultiSource-and-Filter-3MP1OkZOY4kxQPTyMtsTSp",
+  "documentVersion": 3,
+  "latestDocumentVersion": 3,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2025-11-28T13:23:10.532Z",
+  "updatedAt": "2025-11-28T13:30:17.322Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "YyFUpI4Eui",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "yL2lI13ewl",
+          "kind": "table",
+          "source": {
+            "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+            "kind": "warehouse-table",
+            "path": [
+              "sigma_sample_data",
+              "examples__plugs_electronics",
+              "d_customer"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_KEY",
+              "formula": "[d_customer/Cust Key]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_NAME",
+              "formula": "[d_customer/Cust Name]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_ADDRESS",
+              "formula": "[d_customer/Cust Address]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_CITY",
+              "formula": "[d_customer/Cust City]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_STATE",
+              "formula": "[d_customer/Cust State]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_ZIP_CODE",
+              "formula": "[d_customer/Cust Zip Code]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_COUNTY",
+              "formula": "[d_customer/Cust County]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_REGION",
+              "formula": "[d_customer/Cust Region]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_SINCE",
+              "formula": "[d_customer/Cust Since]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_TYPE",
+              "formula": "[d_customer/Cust Type]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_GENDER",
+              "formula": "[d_customer/Cust Gender]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_AGE",
+              "formula": "[d_customer/Cust Age]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/AGE_GROUP",
+              "formula": "[d_customer/Age Group]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CIVIL_STATUS",
+              "formula": "[d_customer/Civil Status]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/LOYALTY_PROGRAM",
+              "formula": "[d_customer/Loyalty Program]"
+            },
+            {
+              "id": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_JSON_FIELD",
+              "formula": "[d_customer/Cust Json Field]"
+            }
+          ],
+          "name": "Dim Customer (DBX)",
+          "order": [
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_KEY",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_NAME",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_ADDRESS",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_CITY",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_STATE",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_ZIP_CODE",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_COUNTY",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_REGION",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_SINCE",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_TYPE",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_GENDER",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_AGE",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/AGE_GROUP",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CIVIL_STATUS",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/LOYALTY_PROGRAM",
+            "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_JSON_FIELD"
+          ]
+        },
+        {
+          "kind": "control",
+          "controlId": "f-Cust-Name",
+          "id": "NNPAB3BLJ6",
+          "filters": [
+            {
+              "source": {
+                "kind": "table",
+                "elementId": "yL2lI13ewl"
+              },
+              "columnId": "inode-52pqUp6sG4HNF6d1jLHULJ/CUST_NAME"
+            },
+            {
+              "source": {
+                "kind": "table",
+                "elementId": "lfYSajCcng"
+              },
+              "columnId": "OAYSbVWb-7"
+            }
+          ],
+          "controlType": "list",
+          "mode": "include",
+          "selectionMode": "multiple",
+          "values": [
+            "Aiden Burnley"
+          ],
+          "source": {
+            "kind": "source",
+            "source": {
+              "kind": "warehouse-table",
+              "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+              "path": [
+                "sigma_sample_data",
+                "examples__plugs_electronics",
+                "d_customer"
+              ]
+            },
+            "columnId": "CUST_NAME"
+          }
+        },
+        {
+          "id": "lfYSajCcng",
+          "kind": "table",
+          "source": {
+            "kind": "join",
+            "joins": [
+              {
+                "left": {
+                  "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "RETAIL",
+                    "PLUGS_ELECTRONICS",
+                    "F_SALES"
+                  ]
+                },
+                "right": {
+                  "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "RETAIL",
+                    "PLUGS_ELECTRONICS",
+                    "D_CUSTOMER"
+                  ]
+                },
+                "columns": [
+                  {
+                    "left": "[Cust Key]",
+                    "right": "[Cust Key]"
+                  }
+                ],
+                "joinType": "inner"
+              }
+            ],
+            "primarySource": {
+              "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+              "kind": "warehouse-table",
+              "path": [
+                "RETAIL",
+                "PLUGS_ELECTRONICS",
+                "F_SALES"
+              ]
+            }
+          },
+          "columns": [
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/ORDER_NUMBER",
+              "formula": "[F_SALES/Order Number]"
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/CUST_KEY",
+              "formula": "[F_SALES/Cust Key]"
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/STORE_KEY",
+              "formula": "[F_SALES/Store Key]"
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/TRANSACTION_TYPE",
+              "formula": "[F_SALES/Transaction Type]"
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/DATE",
+              "formula": "[F_SALES/Date]"
+            },
+            {
+              "id": "inode-3mVA6mXwUOGgVJIdSBQtkr/PURCHASE_METHOD",
+              "formula": "[F_SALES/Purchase Method]"
+            },
+            {
+              "id": "OAYSbVWb-7",
+              "formula": "[D_CUSTOMER/Cust Name]"
+            }
+          ],
+          "name": "Sales (SNOW)",
+          "order": [
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/ORDER_NUMBER",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/CUST_KEY",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/STORE_KEY",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/TRANSACTION_TYPE",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/DATE",
+            "inode-3mVA6mXwUOGgVJIdSBQtkr/PURCHASE_METHOD",
+            "OAYSbVWb-7"
+          ]
+        }
+      ]
+    }
+  ]
+}
