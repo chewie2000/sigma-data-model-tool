@@ -1,0 +1,628 @@
+{
+  "dataModelId": "81e69b5c-2531-42b9-9c49-edb15c0fbe8e",
+  "name": "STst(scratchpad model)",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/STst-scratchpad-model-3X7oFd4Bacw90H9iCpFV4G",
+  "documentVersion": 6,
+  "latestDocumentVersion": 6,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2025-12-10T08:29:35.096Z",
+  "updatedAt": "2025-12-11T14:41:41.148Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "76r3JS5xyo",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "vL6bRAwp1W",
+          "kind": "table",
+          "source": {
+            "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+            "kind": "warehouse-table",
+            "path": [
+              "customer_success",
+              "marko",
+              "calendar_table"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-4IRnDnp81LEXe5WEIHTNce/calendar_date",
+              "formula": "[calendar_table/Calendar Date]"
+            },
+            {
+              "id": "inode-4IRnDnp81LEXe5WEIHTNce/is_weekday",
+              "formula": "[calendar_table/Is Weekday]"
+            },
+            {
+              "id": "inode-4IRnDnp81LEXe5WEIHTNce/day_of_week_num",
+              "formula": "[calendar_table/Day of Week Num]"
+            },
+            {
+              "id": "inode-4IRnDnp81LEXe5WEIHTNce/day_name",
+              "formula": "[calendar_table/Day Name]"
+            },
+            {
+              "id": "inode-4IRnDnp81LEXe5WEIHTNce/iso_week_num",
+              "formula": "[calendar_table/Iso Week Num]"
+            },
+            {
+              "id": "inode-4IRnDnp81LEXe5WEIHTNce/us_holiday_name",
+              "formula": "[calendar_table/Us Holiday Name]"
+            },
+            {
+              "id": "inode-4IRnDnp81LEXe5WEIHTNce/is_us_holiday",
+              "formula": "[calendar_table/Is Us Holiday]"
+            },
+            {
+              "id": "inode-4IRnDnp81LEXe5WEIHTNce/timeline_status",
+              "formula": "[calendar_table/Timeline Status]"
+            }
+          ],
+          "order": [
+            "inode-4IRnDnp81LEXe5WEIHTNce/calendar_date",
+            "inode-4IRnDnp81LEXe5WEIHTNce/is_weekday",
+            "inode-4IRnDnp81LEXe5WEIHTNce/day_of_week_num",
+            "inode-4IRnDnp81LEXe5WEIHTNce/day_name",
+            "inode-4IRnDnp81LEXe5WEIHTNce/iso_week_num",
+            "inode-4IRnDnp81LEXe5WEIHTNce/us_holiday_name",
+            "inode-4IRnDnp81LEXe5WEIHTNce/is_us_holiday",
+            "inode-4IRnDnp81LEXe5WEIHTNce/timeline_status"
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "YBS4mWOdE0",
+          "kind": "table",
+          "source": {
+            "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+            "kind": "warehouse-table",
+            "path": [
+              "customer_success",
+              "marko",
+              "vw_account_balances"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-5eRmEuRKmsDlxI8lUtHWnp/balance_date",
+              "formula": "[vw_account_balances/Balance Date]"
+            },
+            {
+              "id": "inode-5eRmEuRKmsDlxI8lUtHWnp/account_id",
+              "formula": "[vw_account_balances/Account Id]"
+            },
+            {
+              "id": "inode-5eRmEuRKmsDlxI8lUtHWnp/balance",
+              "formula": "[vw_account_balances/Balance]"
+            }
+          ],
+          "order": [
+            "inode-5eRmEuRKmsDlxI8lUtHWnp/balance_date",
+            "inode-5eRmEuRKmsDlxI8lUtHWnp/account_id",
+            "inode-5eRmEuRKmsDlxI8lUtHWnp/balance"
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "JbYcyzWHcv",
+          "kind": "table",
+          "source": {
+            "kind": "join",
+            "joins": [
+              {
+                "left": {
+                  "elementId": "YBS4mWOdE0",
+                  "kind": "table"
+                },
+                "right": {
+                  "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "customer_success",
+                    "marko",
+                    "calendar_table"
+                  ]
+                },
+                "columns": [
+                  {
+                    "left": "True",
+                    "right": "True"
+                  }
+                ],
+                "joinType": "left-outer"
+              }
+            ],
+            "primarySource": {
+              "elementId": "YBS4mWOdE0",
+              "kind": "table"
+            }
+          },
+          "columns": [
+            {
+              "id": "b6dPGqFmQs",
+              "formula": "[vw_account_balances/Account Id]"
+            },
+            {
+              "id": "-ehPuK9noO",
+              "formula": "[vw_account_balances/Balance Date]",
+              "hidden": true
+            },
+            {
+              "id": "65_wn7GghY",
+              "formula": "[calendar_table/Calendar Date]",
+              "name": "SkeletonDate"
+            },
+            {
+              "id": "HSHZuLHnJx",
+              "formula": "[calendar_table/Is Weekday]"
+            },
+            {
+              "id": "qkQAwas75M",
+              "formula": "[calendar_table/Day of Week Num]"
+            },
+            {
+              "id": "ySwWGzXDxk",
+              "formula": "[calendar_table/Day Name]"
+            },
+            {
+              "id": "dUlOpo0JmQ",
+              "formula": "[calendar_table/Iso Week Num]"
+            },
+            {
+              "id": "gzBw6BUj1b",
+              "formula": "[calendar_table/Us Holiday Name]"
+            },
+            {
+              "id": "4a3DXZ2Bp2",
+              "formula": "[calendar_table/Is Us Holiday]"
+            },
+            {
+              "id": "Hh9-h4T-2b",
+              "formula": "[calendar_table/Timeline Status]"
+            }
+          ],
+          "name": "AccountId's cross joined with dates for Dense Skeleton",
+          "filters": [
+            {
+              "id": "MQ5IMxS578",
+              "columnId": "-ehPuK9noO",
+              "kind": "list",
+              "mode": "include",
+              "values": [
+                1704067200000
+              ]
+            }
+          ],
+          "order": [
+            "b6dPGqFmQs",
+            "-ehPuK9noO",
+            "65_wn7GghY",
+            "HSHZuLHnJx",
+            "qkQAwas75M",
+            "ySwWGzXDxk",
+            "dUlOpo0JmQ",
+            "gzBw6BUj1b",
+            "4a3DXZ2Bp2",
+            "Hh9-h4T-2b"
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "oL6kTYZrX7",
+          "kind": "table",
+          "source": {
+            "kind": "join",
+            "joins": [
+              {
+                "left": {
+                  "elementId": "JbYcyzWHcv",
+                  "kind": "table"
+                },
+                "right": {
+                  "connectionId": "a5ce3e95-a265-4167-9c16-9af3a3d60ff0",
+                  "kind": "warehouse-table",
+                  "path": [
+                    "customer_success",
+                    "marko",
+                    "vw_account_balances"
+                  ]
+                },
+                "columns": [
+                  {
+                    "left": "[SkeletonDate]",
+                    "right": "[Balance Date]"
+                  },
+                  {
+                    "left": "[Account Id]",
+                    "right": "[Account Id]"
+                  }
+                ],
+                "joinType": "left-outer"
+              }
+            ],
+            "primarySource": {
+              "elementId": "JbYcyzWHcv",
+              "kind": "table"
+            }
+          },
+          "columns": [
+            {
+              "id": "6DNXa9IbP0",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/Account Id]"
+            },
+            {
+              "id": "h_KRFqsXBc",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/SkeletonDate]"
+            },
+            {
+              "id": "420oKo48bV",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/Is Weekday]"
+            },
+            {
+              "id": "Q_u6bcgpiv",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/Day of Week Num]"
+            },
+            {
+              "id": "UgQ10Zy8UU",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/Day Name]"
+            },
+            {
+              "id": "Z87HAC5RgD",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/Iso Week Num]"
+            },
+            {
+              "id": "ICuoru8WOT",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/Us Holiday Name]"
+            },
+            {
+              "id": "0dUjEorJWy",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/Is Us Holiday]"
+            },
+            {
+              "id": "XPxd6Hwr2f",
+              "formula": "[AccountId's cross joined with dates for Dense Skeleton/Timeline Status]"
+            },
+            {
+              "id": "C1v0jHvfZU",
+              "formula": "[vw_account_balances/Balance Date]"
+            },
+            {
+              "id": "Mn7rBGbIHH",
+              "formula": "[vw_account_balances/Account Id]"
+            },
+            {
+              "id": "6nl0Jsm2fF",
+              "formula": "[vw_account_balances/Balance]"
+            }
+          ],
+          "name": "AccountBalance x Skeleton",
+          "order": [
+            "6DNXa9IbP0",
+            "h_KRFqsXBc",
+            "420oKo48bV",
+            "Q_u6bcgpiv",
+            "UgQ10Zy8UU",
+            "Z87HAC5RgD",
+            "ICuoru8WOT",
+            "0dUjEorJWy",
+            "XPxd6Hwr2f",
+            "C1v0jHvfZU",
+            "Mn7rBGbIHH",
+            "6nl0Jsm2fF"
+          ],
+          "visibleAsSource": false,
+          "sort": [
+            {
+              "columnId": "h_KRFqsXBc",
+              "direction": "ascending",
+              "nulls": "last"
+            }
+          ]
+        },
+        {
+          "id": "87jLiVEpvP",
+          "kind": "table",
+          "source": {
+            "elementId": "oL6kTYZrX7",
+            "kind": "table"
+          },
+          "columns": [
+            {
+              "id": "55snWjye-U",
+              "formula": "[AccountBalance x Skeleton/Account Id]"
+            },
+            {
+              "id": "KnImkUgPom",
+              "formula": "[AccountBalance x Skeleton/SkeletonDate]"
+            },
+            {
+              "id": "Pu7Ywyw7EF",
+              "formula": "[AccountBalance x Skeleton/Is Weekday]"
+            },
+            {
+              "id": "rQ8nktjPxL",
+              "formula": "[AccountBalance x Skeleton/Day of Week Num]"
+            },
+            {
+              "id": "7xr6dBMgy2",
+              "formula": "[AccountBalance x Skeleton/Day Name]"
+            },
+            {
+              "id": "DWJgpAU_kb",
+              "formula": "[AccountBalance x Skeleton/Iso Week Num]"
+            },
+            {
+              "id": "nhAcimFk6b",
+              "formula": "[AccountBalance x Skeleton/Us Holiday Name]"
+            },
+            {
+              "id": "dYwdsqzrHQ",
+              "formula": "[AccountBalance x Skeleton/Is Us Holiday]"
+            },
+            {
+              "id": "seR6RzHV2t",
+              "formula": "[AccountBalance x Skeleton/Timeline Status]"
+            },
+            {
+              "id": "x672WfZGbr",
+              "formula": "[AccountBalance x Skeleton/Balance Date]"
+            },
+            {
+              "id": "9hs11ErkKA",
+              "formula": "[AccountBalance x Skeleton/Account Id (vw_account_balances)]"
+            },
+            {
+              "id": "P7IOXicqbV",
+              "formula": "[AccountBalance x Skeleton/Balance]"
+            },
+            {
+              "id": "2T9D4bwGw-",
+              "formula": "Lag([Balance])",
+              "name": "Lag 1"
+            },
+            {
+              "id": "0dNcG_xRbl",
+              "formula": "Lag([Balance], 2)",
+              "name": "Lag 2"
+            }
+          ],
+          "name": "AccountBalance x Skeleton (Grouped and Sorted) - LAG",
+          "groupings": [
+            {
+              "id": "RTvi6p3Uet",
+              "groupBy": [
+                "55snWjye-U"
+              ]
+            }
+          ],
+          "order": [
+            "KnImkUgPom",
+            "Pu7Ywyw7EF",
+            "rQ8nktjPxL",
+            "7xr6dBMgy2",
+            "DWJgpAU_kb",
+            "nhAcimFk6b",
+            "dYwdsqzrHQ",
+            "seR6RzHV2t",
+            "x672WfZGbr",
+            "9hs11ErkKA",
+            "P7IOXicqbV",
+            "2T9D4bwGw-",
+            "0dNcG_xRbl"
+          ],
+          "visibleAsSource": false,
+          "sort": [
+            {
+              "columnId": "KnImkUgPom",
+              "direction": "ascending",
+              "nulls": "last"
+            }
+          ]
+        },
+        {
+          "id": "FZG8G-iTDJ",
+          "kind": "table",
+          "source": {
+            "elementId": "oL6kTYZrX7",
+            "kind": "table"
+          },
+          "columns": [
+            {
+              "id": "55snWjye-U",
+              "formula": "[AccountBalance x Skeleton/Account Id]"
+            },
+            {
+              "id": "KnImkUgPom",
+              "formula": "[AccountBalance x Skeleton/SkeletonDate]"
+            },
+            {
+              "id": "9hs11ErkKA",
+              "formula": "[AccountBalance x Skeleton/Account Id (vw_account_balances)]"
+            },
+            {
+              "id": "P7IOXicqbV",
+              "formula": "[AccountBalance x Skeleton/Balance]"
+            },
+            {
+              "id": "qYH_DrJj2x",
+              "formula": "If([Is Weekday] = True, Zn([Balance]))",
+              "name": "znBalance"
+            },
+            {
+              "id": "2B5y9ZIgHE",
+              "formula": "FillDown([znBalance])",
+              "name": "FillDown"
+            },
+            {
+              "id": "fmaEFng-2p",
+              "formula": "If([Is Weekday] = False, [FillDown], Zn([Balance]))",
+              "name": "Basic Calc"
+            },
+            {
+              "id": "CRl9oa57jO",
+              "formula": "If([Is Weekday] = False or [Is Us Holiday] = True, [FillDown], Zn([Balance]))",
+              "name": "Calc with Holiday"
+            },
+            {
+              "id": "Pu7Ywyw7EF",
+              "formula": "[AccountBalance x Skeleton/Is Weekday]"
+            },
+            {
+              "id": "rQ8nktjPxL",
+              "formula": "[AccountBalance x Skeleton/Day of Week Num]"
+            },
+            {
+              "id": "7xr6dBMgy2",
+              "formula": "[AccountBalance x Skeleton/Day Name]"
+            },
+            {
+              "id": "DWJgpAU_kb",
+              "formula": "[AccountBalance x Skeleton/Iso Week Num]"
+            },
+            {
+              "id": "nhAcimFk6b",
+              "formula": "[AccountBalance x Skeleton/Us Holiday Name]"
+            },
+            {
+              "id": "dYwdsqzrHQ",
+              "formula": "[AccountBalance x Skeleton/Is Us Holiday]"
+            },
+            {
+              "id": "seR6RzHV2t",
+              "formula": "[AccountBalance x Skeleton/Timeline Status]"
+            },
+            {
+              "id": "x672WfZGbr",
+              "formula": "[AccountBalance x Skeleton/Balance Date]"
+            }
+          ],
+          "name": "AccountBalance x Skeleton (Grouped and Sorted) - Filldown",
+          "groupings": [
+            {
+              "id": "RTvi6p3Uet",
+              "groupBy": [
+                "55snWjye-U"
+              ]
+            }
+          ],
+          "order": [
+            "KnImkUgPom",
+            "9hs11ErkKA",
+            "P7IOXicqbV",
+            "qYH_DrJj2x",
+            "2B5y9ZIgHE",
+            "fmaEFng-2p",
+            "CRl9oa57jO",
+            "Pu7Ywyw7EF",
+            "rQ8nktjPxL",
+            "7xr6dBMgy2",
+            "DWJgpAU_kb",
+            "nhAcimFk6b",
+            "dYwdsqzrHQ",
+            "seR6RzHV2t",
+            "x672WfZGbr"
+          ],
+          "visibleAsSource": false,
+          "sort": [
+            {
+              "columnId": "KnImkUgPom",
+              "direction": "ascending",
+              "nulls": "last"
+            }
+          ]
+        },
+        {
+          "id": "nfbU7cV3Pu",
+          "kind": "table",
+          "source": {
+            "elementId": "FZG8G-iTDJ",
+            "kind": "table"
+          },
+          "columns": [
+            {
+              "id": "_n_5WxAZAZ",
+              "formula": "DateTrunc(\"month\", [AccountBalance x Skeleton (Grouped and Sorted) - Filldown/SkeletonDate])",
+              "name": "Month"
+            },
+            {
+              "id": "QlevYZ64Xf",
+              "formula": "[AccountBalance x Skeleton (Grouped and Sorted) - Filldown/Account Id]"
+            },
+            {
+              "id": "0vLaJZDt-S",
+              "formula": "Avg([Calc with Holiday])"
+            },
+            {
+              "id": "Fakd5TcGQ6",
+              "formula": "[AccountBalance x Skeleton (Grouped and Sorted) - Filldown/Calc with Holiday]",
+              "hidden": true
+            }
+          ],
+          "name": "MonthlyAvg",
+          "groupings": [
+            {
+              "id": "OOMy1IImA1",
+              "groupBy": [
+                "_n_5WxAZAZ",
+                "QlevYZ64Xf"
+              ],
+              "calculations": [
+                "0vLaJZDt-S"
+              ]
+            }
+          ],
+          "order": [
+            "Fakd5TcGQ6"
+          ]
+        },
+        {
+          "id": "FxlqmOJqYN",
+          "kind": "table",
+          "source": {
+            "elementId": "FZG8G-iTDJ",
+            "kind": "table"
+          },
+          "columns": [
+            {
+              "id": "ekjz4IBOJU",
+              "formula": "[AccountBalance x Skeleton (Grouped and Sorted) - Filldown/Iso Week Num]"
+            },
+            {
+              "id": "64zrFwszuM",
+              "formula": "[AccountBalance x Skeleton (Grouped and Sorted) - Filldown/Account Id]"
+            },
+            {
+              "id": "-5w_KnN1hs",
+              "formula": "Avg([Calc with Holiday])"
+            },
+            {
+              "id": "9aGoTZKAoS",
+              "formula": "[AccountBalance x Skeleton (Grouped and Sorted) - Filldown/Calc with Holiday]",
+              "hidden": true
+            }
+          ],
+          "name": "WeeklyAvg",
+          "groupings": [
+            {
+              "id": "dqL2JzWtlF",
+              "groupBy": [
+                "ekjz4IBOJU",
+                "64zrFwszuM"
+              ],
+              "calculations": [
+                "-5w_KnN1hs"
+              ]
+            }
+          ],
+          "order": [
+            "9aGoTZKAoS"
+          ]
+        }
+      ]
+    }
+  ]
+}
