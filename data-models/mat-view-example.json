@@ -1,0 +1,21 @@
+{
+  "dataModelId": "3f9af311-fcf6-4be8-84e4-c074574b89df",
+  "name": "MAT View Example",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/MAT-View-Example-1W1knAlapwGIbQRu2uON4j",
+  "documentVersion": 1,
+  "latestDocumentVersion": 1,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "9a4b8a79-8651-43e0-a675-2e7e51bcee3c",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-01-29T08:56:24.630Z",
+  "updatedAt": "2026-01-29T08:56:24.630Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "wZmehNLcez",
+      "name": "Page 1",
+      "elements": []
+    }
+  ]
+}
