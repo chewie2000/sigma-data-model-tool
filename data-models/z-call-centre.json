@@ -1,0 +1,159 @@
+{
+  "dataModelId": "8521f70f-8a0d-40a4-a60e-16987c8562b8",
+  "name": "z. Call Centre",
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/z-Call-Centre-43dv63ghscGDIdA8zTuiuc",
+  "documentVersion": 2,
+  "latestDocumentVersion": 2,
+  "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "folderId": "99d9aab1-be6a-4b19-9aeb-02c972d522cd",
+  "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
+  "createdAt": "2026-03-18T07:55:02.842Z",
+  "updatedAt": "2026-03-18T07:56:03.744Z",
+  "schemaVersion": 1,
+  "pages": [
+    {
+      "id": "JIdIeaNee9",
+      "name": "Page 1",
+      "elements": [
+        {
+          "id": "tjv8j-rqZn",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "FUN",
+              "CALL_CENTER",
+              "AGENTS"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_ID",
+              "formula": "[AGENTS/Agent Id]"
+            },
+            {
+              "id": "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_TEAM",
+              "formula": "[AGENTS/Agent Team]"
+            },
+            {
+              "id": "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_FIRST_NAME",
+              "formula": "[AGENTS/Agent First Name]"
+            },
+            {
+              "id": "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_LAST_NAME",
+              "formula": "[AGENTS/Agent Last Name]"
+            },
+            {
+              "id": "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_HIRE_DATE",
+              "formula": "[AGENTS/Agent Hire Date]"
+            }
+          ],
+          "order": [
+            "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_ID",
+            "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_TEAM",
+            "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_FIRST_NAME",
+            "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_LAST_NAME",
+            "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_HIRE_DATE"
+          ]
+        },
+        {
+          "id": "n376Et33Jb",
+          "kind": "table",
+          "source": {
+            "connectionId": "6d573363-dea2-4e44-9886-fe7812818a6e",
+            "kind": "warehouse-table",
+            "path": [
+              "FUN",
+              "CALL_CENTER",
+              "CALLS_LOG"
+            ]
+          },
+          "columns": [
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/CALL_ID",
+              "formula": "[CALLS_LOG/Call Id]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/AGENT_ID",
+              "formula": "[CALLS_LOG/Agent Id]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/AGENT_TEAM",
+              "formula": "[CALLS_LOG/Agent Team]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/CALL_DATE",
+              "formula": "[CALLS_LOG/Call Date]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/CALL_RECEIVED",
+              "formula": "[CALLS_LOG/Call Received]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/HOLD_END_TIME",
+              "formula": "[CALLS_LOG/Hold End Time]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/CALL_START",
+              "formula": "[CALLS_LOG/Call Start]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/CALL_END",
+              "formula": "[CALLS_LOG/Call End]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/CUSTOMER_ID",
+              "formula": "[CALLS_LOG/Customer Id]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/WAS_ESCALATED",
+              "formula": "[CALLS_LOG/Was Escalated]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/ESCALATION_ID",
+              "formula": "[CALLS_LOG/Escalation Id]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/FRAUD_FLAGGED",
+              "formula": "[CALLS_LOG/Fraud Flagged]"
+            },
+            {
+              "id": "inode-472TzhaD9f59QcimoxZFcl/MERCHANT_NAME",
+              "formula": "[CALLS_LOG/Merchant Name]"
+            }
+          ],
+          "relationships": [
+            {
+              "id": "xLV8C_t1mk",
+              "targetElementId": "tjv8j-rqZn",
+              "keys": [
+                {
+                  "sourceColumnId": "inode-472TzhaD9f59QcimoxZFcl/AGENT_ID",
+                  "targetColumnId": "inode-4WVeZHxE4ypbzvg2A4CJX8/AGENT_ID"
+                }
+              ],
+              "name": "Agent Relationship"
+            }
+          ],
+          "order": [
+            "inode-472TzhaD9f59QcimoxZFcl/CALL_ID",
+            "inode-472TzhaD9f59QcimoxZFcl/AGENT_ID",
+            "inode-472TzhaD9f59QcimoxZFcl/AGENT_TEAM",
+            "inode-472TzhaD9f59QcimoxZFcl/CALL_DATE",
+            "inode-472TzhaD9f59QcimoxZFcl/CALL_RECEIVED",
+            "inode-472TzhaD9f59QcimoxZFcl/HOLD_END_TIME",
+            "inode-472TzhaD9f59QcimoxZFcl/CALL_START",
+            "inode-472TzhaD9f59QcimoxZFcl/CALL_END",
+            "inode-472TzhaD9f59QcimoxZFcl/CUSTOMER_ID",
+            "inode-472TzhaD9f59QcimoxZFcl/WAS_ESCALATED",
+            "inode-472TzhaD9f59QcimoxZFcl/ESCALATION_ID",
+            "inode-472TzhaD9f59QcimoxZFcl/FRAUD_FLAGGED",
+            "inode-472TzhaD9f59QcimoxZFcl/MERCHANT_NAME"
+          ]
+        }
+      ]
+    }
+  ]
+}
