@@ -1,23 +1,23 @@
 {
-  "dataModelId": "f122b166-6830-485e-b75e-b3c45919ca5a",
+  "dataModelId": "4c85391e-db62-4cb0-9062-bbb707cb39a4",
   "name": "Watch Model (CS EMEA)",
-  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Watch-Model-CS-EMEA-7l10lh74la1e7pdEXRQHN0",
-  "documentVersion": 4,
-  "latestDocumentVersion": 4,
+  "url": "https://app.sigmacomputing.com/marko-eutest/data-model/Watch-Model-CS-EMEA-2koiBa4sG8FnidFnD8ODnC",
+  "documentVersion": 3,
+  "latestDocumentVersion": 3,
   "ownerId": "8UomPZMREmTZLfEXBtb0WC0na36f0",
-  "folderId": "97eff3cb-102e-4954-978f-7598fd7cbf7c",
+  "folderId": "1f1377e9-131e-4ce0-9f23-67f80de984dc",
   "createdBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
   "updatedBy": "8UomPZMREmTZLfEXBtb0WC0na36f0",
-  "createdAt": "2026-01-27T14:23:20.168Z",
-  "updatedAt": "2026-01-27T14:27:53.733Z",
+  "createdAt": "2026-01-27T15:08:32.644Z",
+  "updatedAt": "2026-01-27T15:25:58.679Z",
   "schemaVersion": 1,
   "pages": [
     {
-      "id": "n5x07C2WXy",
+      "id": "ETLe6AduBj",
       "name": "Page 1",
       "elements": [
         {
-          "id": "LzXPUVEaFa",
+          "id": "ILkfeucqv4",
           "kind": "table",
           "source": {
             "connectionId": "a3a393ca-2691-446a-b72a-778f37f25021",
@@ -30,140 +30,54 @@
           },
           "columns": [
             {
-              "id": "inode-3yayIxFFdPFVrDkm9iCewm/TRANSACTION_ID",
+              "id": "0eAi7aR4mn",
               "formula": "[FACT_SALES/Transaction Id]"
             },
             {
-              "id": "inode-3yayIxFFdPFVrDkm9iCewm/SALE_TIMESTAMP",
+              "id": "Y5xjjlBoXt",
               "formula": "[FACT_SALES/Sale Timestamp]"
             },
             {
-              "id": "inode-3yayIxFFdPFVrDkm9iCewm/STORE_ID",
+              "id": "p1FwLqMBFM",
               "formula": "[FACT_SALES/Store Id]"
             },
             {
-              "id": "inode-3yayIxFFdPFVrDkm9iCewm/PRODUCT_ID",
+              "id": "gtb9dkQVJh",
               "formula": "[FACT_SALES/Product Id]"
             },
             {
-              "id": "inode-3yayIxFFdPFVrDkm9iCewm/CUSTOMER_ID",
+              "id": "LoqwYGWdQh",
               "formula": "[FACT_SALES/Customer Id]"
             },
             {
-              "id": "inode-3yayIxFFdPFVrDkm9iCewm/QUANTITY",
+              "id": "RZQWnOnwLP",
               "formula": "[FACT_SALES/Quantity]"
             },
             {
-              "id": "inode-3yayIxFFdPFVrDkm9iCewm/AMOUNT",
+              "id": "Sm9cQqv8KS",
               "formula": "[FACT_SALES/Amount]"
             },
             {
-              "id": "inode-3yayIxFFdPFVrDkm9iCewm/APPOINTMENT_ID",
+              "id": "KO7HrhqZx5",
               "formula": "[FACT_SALES/Appointment Id]"
             }
           ],
           "metrics": [
             {
-              "id": "qEY1mK0-TU",
+              "id": "5fk7dz-jnF",
               "formula": "Sum([Amount])",
               "name": "Sales"
             }
           ],
-          "relationships": [
-            {
-              "id": "eH0a_YbZPJ",
-              "targetElementId": "L_LsHGiM0N",
-              "keys": [
-                {
-                  "sourceColumnId": "inode-3yayIxFFdPFVrDkm9iCewm/PRODUCT_ID",
-                  "targetColumnId": "inode-3C9bPmbdJLKPqchrRDNJhl/ID"
-                }
-              ]
-            }
-          ],
           "order": [
-            "inode-3yayIxFFdPFVrDkm9iCewm/TRANSACTION_ID",
-            "inode-3yayIxFFdPFVrDkm9iCewm/SALE_TIMESTAMP",
-            "inode-3yayIxFFdPFVrDkm9iCewm/STORE_ID",
-            "inode-3yayIxFFdPFVrDkm9iCewm/PRODUCT_ID",
-            "inode-3yayIxFFdPFVrDkm9iCewm/CUSTOMER_ID",
-            "inode-3yayIxFFdPFVrDkm9iCewm/QUANTITY",
-            "inode-3yayIxFFdPFVrDkm9iCewm/AMOUNT",
-            "inode-3yayIxFFdPFVrDkm9iCewm/APPOINTMENT_ID"
-          ],
-          "columnSecurities": [
-            {
-              "id": "ClmdJx345q",
-              "criteria": {
-                "kind": "specific-users-and-teams",
-                "assignments": [
-                  {
-                    "type": "team",
-                    "teamId": "7962e626-8856-42b0-a6ed-00afcec36da7"
-                  }
-                ]
-              },
-              "restrictedColumns": [
-                "inode-3yayIxFFdPFVrDkm9iCewm/CUSTOMER_ID"
-              ]
-            }
-          ]
-        },
-        {
-          "id": "L_LsHGiM0N",
-          "kind": "table",
-          "source": {
-            "connectionId": "a3a393ca-2691-446a-b72a-778f37f25021",
-            "kind": "warehouse-table",
-            "path": [
-              "CSEMEA",
-              "WATCHES",
-              "DIM_WATCHES"
-            ]
-          },
-          "columns": [
-            {
-              "id": "inode-3C9bPmbdJLKPqchrRDNJhl/ID",
-              "formula": "[DIM_WATCHES/Id]"
-            },
-            {
-              "id": "inode-3C9bPmbdJLKPqchrRDNJhl/BRAND",
-              "formula": "[DIM_WATCHES/Brand]"
-            },
-            {
-              "id": "inode-3C9bPmbdJLKPqchrRDNJhl/WATCH_NAME",
-              "formula": "[DIM_WATCHES/Watch Name]"
-            },
-            {
-              "id": "inode-3C9bPmbdJLKPqchrRDNJhl/WATCH_SIZE",
-              "formula": "[DIM_WATCHES/Watch Size]"
-            },
-            {
-              "id": "inode-3C9bPmbdJLKPqchrRDNJhl/WATCH_MATERIAL",
-              "formula": "[DIM_WATCHES/Watch Material]"
-            },
-            {
-              "id": "inode-3C9bPmbdJLKPqchrRDNJhl/PRICE",
-              "formula": "[DIM_WATCHES/Price]"
-            },
-            {
-              "id": "inode-3C9bPmbdJLKPqchrRDNJhl/RATING",
-              "formula": "[DIM_WATCHES/Rating]"
-            },
-            {
-              "id": "inode-3C9bPmbdJLKPqchrRDNJhl/IMAGE_URL",
-              "formula": "[DIM_WATCHES/Image Url]"
-            }
-          ],
-          "order": [
-            "inode-3C9bPmbdJLKPqchrRDNJhl/ID",
-            "inode-3C9bPmbdJLKPqchrRDNJhl/BRAND",
-            "inode-3C9bPmbdJLKPqchrRDNJhl/WATCH_NAME",
-            "inode-3C9bPmbdJLKPqchrRDNJhl/WATCH_SIZE",
-            "inode-3C9bPmbdJLKPqchrRDNJhl/WATCH_MATERIAL",
-            "inode-3C9bPmbdJLKPqchrRDNJhl/PRICE",
-            "inode-3C9bPmbdJLKPqchrRDNJhl/RATING",
-            "inode-3C9bPmbdJLKPqchrRDNJhl/IMAGE_URL"
+            "0eAi7aR4mn",
+            "Y5xjjlBoXt",
+            "p1FwLqMBFM",
+            "gtb9dkQVJh",
+            "LoqwYGWdQh",
+            "RZQWnOnwLP",
+            "Sm9cQqv8KS",
+            "KO7HrhqZx5"
           ]
         }
       ]
