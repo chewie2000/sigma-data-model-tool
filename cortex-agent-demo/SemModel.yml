@@ -27,7 +27,7 @@ tables:
         description: Unique identifier for each order.
         expr: O_ORDERKEY
         data_type: NUMBER
-        unique: true
+        primary_key: true
 
       - name: customer_key
         description: Foreign key to the CUSTOMER table.
@@ -279,7 +279,7 @@ tables:
         description: Unique customer identifier.
         expr: C_CUSTKEY
         data_type: NUMBER
-        unique: true
+        primary_key: true
 
       - name: customer_name
         synonyms: [name, customer]
@@ -342,7 +342,7 @@ tables:
         description: Unique supplier identifier.
         expr: S_SUPPKEY
         data_type: NUMBER
-        unique: true
+        primary_key: true
 
       - name: supplier_name
         synonyms: [vendor, supplier]
@@ -390,7 +390,7 @@ tables:
         description: Unique part identifier.
         expr: P_PARTKEY
         data_type: NUMBER
-        unique: true
+        primary_key: true
 
       - name: part_name
         synonyms: [product name, item name]
@@ -457,7 +457,7 @@ tables:
         description: Unique nation identifier.
         expr: N_NATIONKEY
         data_type: NUMBER
-        unique: true
+        primary_key: true
 
       - name: nation_name
         synonyms: [country, country name, nation]
@@ -483,7 +483,7 @@ tables:
         description: Unique region identifier.
         expr: R_REGIONKEY
         data_type: NUMBER
-        unique: true
+        primary_key: true
 
       - name: region_name
         synonyms: [region, geography, area]
