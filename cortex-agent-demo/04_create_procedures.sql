@@ -10,8 +10,8 @@
 -- procedures can call them.
 -- =============================================================================
 
-USE DATABASE CORTEX_AGENT_DEMO;
-USE SCHEMA   TPCH;
+USE DATABASE MARKO;
+USE SCHEMA   ANALYTICS;
 USE WAREHOUSE CORTEX_DEMO_WH;
 
 -- ---------------------------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE OR REPLACE NETWORK RULE CORTEX_REST_RULE
 -- ---------------------------------------------------------------------------
 
 CREATE OR REPLACE EXTERNAL ACCESS INTEGRATION CORTEX_REST_INTEGRATION
-    ALLOWED_NETWORK_RULES = (CORTEX_AGENT_DEMO.TPCH.CORTEX_REST_RULE)
+    ALLOWED_NETWORK_RULES = (MARKO.ANALYTICS.CORTEX_REST_RULE)
     ENABLED = TRUE
     COMMENT = 'External access for Cortex Analyst and Cortex Agent REST APIs';
 
@@ -62,7 +62,7 @@ BEGIN
 
     search_json := PARSE_JSON(
         SNOWFLAKE.CORTEX.SEARCH_PREVIEW(
-            'CORTEX_AGENT_DEMO.TPCH.BUSINESS_KNOWLEDGE_SEARCH',
+            'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH',
             :query_obj
         )
     );
@@ -96,7 +96,7 @@ AS $$
 import json
 import requests
 
-SEMANTIC_MODEL = '@CORTEX_AGENT_DEMO.TPCH.SEMANTIC_MODELS/02_semantic_model.yaml'
+SEMANTIC_MODEL = '@MARKO.ANALYTICS.SEMANTIC_MODELS/02_semantic_model.yaml'
 
 def run(session, question: str):
     # Resolve account URL at runtime
@@ -163,8 +163,8 @@ AS $$
 import json
 import requests
 
-SEMANTIC_MODEL  = '@CORTEX_AGENT_DEMO.TPCH.SEMANTIC_MODELS/02_semantic_model.yaml'
-SEARCH_SERVICE  = 'CORTEX_AGENT_DEMO.TPCH.BUSINESS_KNOWLEDGE_SEARCH'
+SEMANTIC_MODEL  = '@MARKO.ANALYTICS.SEMANTIC_MODELS/02_semantic_model.yaml'
+SEARCH_SERVICE  = 'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH'
 AGENT_LLM       = 'claude-3-5-sonnet'
 
 def run(session, question: str):

@@ -48,7 +48,7 @@ End-to-end demo of a **Snowflake Cortex Agent** driven entirely from SQL.
 
 ### Step 1 — Database & data (`01_setup_database.sql`)
 
-Creates `CORTEX_AGENT_DEMO.TPCH`, views over `TPCH_SF1`, and seeds
+Creates `MARKO.ANALYTICS`, views over `TPCH_SF1`, and seeds
 the `BUSINESS_KNOWLEDGE` table with 8 documents.
 
 ```sql
@@ -73,16 +73,16 @@ Upload the YAML to the stage (one-time, via snowsql CLI):
 ```bash
 snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USER \
   -q "PUT file://02_semantic_model.yaml \
-       @CORTEX_AGENT_DEMO.TPCH.SEMANTIC_MODELS \
+       @MARKO.ANALYTICS.SEMANTIC_MODELS \
        AUTO_COMPRESS=FALSE OVERWRITE=TRUE"
 ```
 
 Or drag-and-drop in Snowsight:
-`Data > Databases > CORTEX_AGENT_DEMO > TPCH > Stages > SEMANTIC_MODELS`
+`Data > Databases > MARKO > ANALYTICS > Stages > SEMANTIC_MODELS`
 
 Verify:
 ```sql
-LIST @CORTEX_AGENT_DEMO.TPCH.SEMANTIC_MODELS;
+LIST @MARKO.ANALYTICS.SEMANTIC_MODELS;
 ```
 
 ### Step 4 — Stored procedures (`04_create_procedures.sql`)

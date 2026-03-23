@@ -4,9 +4,9 @@
 -- =============================================================================
 
 -- Create a dedicated database/schema for the demo
-CREATE DATABASE IF NOT EXISTS CORTEX_AGENT_DEMO;
-CREATE SCHEMA IF NOT EXISTS CORTEX_AGENT_DEMO.TPCH;
-USE SCHEMA CORTEX_AGENT_DEMO.TPCH;
+CREATE DATABASE IF NOT EXISTS MARKO;
+CREATE SCHEMA IF NOT EXISTS MARKO.ANALYTICS;
+USE SCHEMA MARKO.ANALYTICS;
 
 -- Create a warehouse for the demo
 CREATE WAREHOUSE IF NOT EXISTS CORTEX_DEMO_WH

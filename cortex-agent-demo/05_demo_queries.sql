@@ -11,8 +11,8 @@
 --   D. Cortex Agent — full orchestration (Analyst + Search)
 -- =============================================================================
 
-USE DATABASE CORTEX_AGENT_DEMO;
-USE SCHEMA   TPCH;
+USE DATABASE MARKO;
+USE SCHEMA   ANALYTICS;
 USE WAREHOUSE CORTEX_DEMO_WH;
 
 
@@ -148,7 +148,7 @@ FROM TABLE(
     FLATTEN(
         input => PARSE_JSON(
             SNOWFLAKE.CORTEX.SEARCH_PREVIEW(
-                'CORTEX_AGENT_DEMO.TPCH.BUSINESS_KNOWLEDGE_SEARCH',
+                'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH',
                 '{ "query": "how is revenue calculated",
                    "columns": ["DOC_ID","CATEGORY","TITLE","CONTENT"],
                    "limit": 3 }'
@@ -165,7 +165,7 @@ FROM TABLE(
     FLATTEN(
         input => PARSE_JSON(
             SNOWFLAKE.CORTEX.SEARCH_PREVIEW(
-                'CORTEX_AGENT_DEMO.TPCH.BUSINESS_KNOWLEDGE_SEARCH',
+                'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH',
                 '{ "query": "order status codes meaning",
                    "columns": ["TITLE","CONTENT"],
                    "limit": 2 }'
