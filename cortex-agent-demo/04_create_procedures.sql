@@ -148,8 +148,8 @@ $$;
 
 -- ---------------------------------------------------------------------------
 -- 4e. ASK_CORTEX_AGENT
---     Orchestrates both Cortex Analyst (NL→SQL) and Cortex Search (RAG).
---     The agent decides which tool(s) to invoke per question.
+--     SQL wrapper to invoke the TPCH_SALES_AGENT defined in step 3.
+--     The agent decides which tool(s) to use (Analyst, Search, or both).
 -- ---------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE ASK_CORTEX_AGENT(QUESTION VARCHAR)
