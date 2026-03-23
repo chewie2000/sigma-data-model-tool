@@ -16,7 +16,7 @@ CREATE OR REPLACE STAGE SEMANTIC_MODELS
     COMMENT = 'Stores Cortex Analyst semantic model YAML files';
 
 -- After running this script, upload the YAML from your local machine:
---   PUT file://02_semantic_model.yaml @SEMANTIC_MODELS AUTO_COMPRESS=FALSE;
+--   PUT file://SemModel.yml @SEMANTIC_MODELS AUTO_COMPRESS=FALSE;
 -- Or via Snowsight: Data > Databases > MARKO > ANALYTICS > Stages > SEMANTIC_MODELS
 
 -- Verify the stage after upload:

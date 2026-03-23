@@ -26,7 +26,7 @@ End-to-end demo of a **Snowflake Cortex Agent** driven entirely from SQL.
   │   Cortex Analyst         │              │   Cortex Search            │
   │   (NL → SQL)             │              │   SEARCH_PREVIEW()         │
   │                          │              │                            │
-  │   02_semantic_model.yaml │              │   BUSINESS_KNOWLEDGE table │
+  │   SemModel.yml │              │   BUSINESS_KNOWLEDGE table │
   │   on internal stage      │              │   (KPI defs, biz rules)    │
   │                          │              │                            │
   │   TPC-H views            │              │   Vector index             │
@@ -56,7 +56,7 @@ the `BUSINESS_KNOWLEDGE` table with 8 documents.
 SOURCE 01_setup_database.sql;
 ```
 
-### Step 2 — Semantic model (`02_semantic_model.yaml`)
+### Step 2 — Semantic model (`SemModel.yml`)
 
 The Cortex Analyst semantic model. Upload it to the stage created in step 3.
 
@@ -72,7 +72,7 @@ Upload the YAML to the stage (one-time, via snowsql CLI):
 
 ```bash
 snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USER \
-  -q "PUT file://02_semantic_model.yaml \
+  -q "PUT file://SemModel.yml \
        @MARKO.ANALYTICS.SEMANTIC_MODELS \
        AUTO_COMPRESS=FALSE OVERWRITE=TRUE"
 ```
@@ -149,7 +149,7 @@ CALL ASK_CORTEX_AGENT('Which shipping modes exist and what is revenue per mode?'
 | File | Purpose |
 |------|---------|
 | `01_setup_database.sql` | DB, schema, TPC-H views, seed knowledge docs |
-| `02_semantic_model.yaml` | Cortex Analyst semantic model |
+| `SemModel.yml` | Cortex Analyst semantic model |
 | `03_setup_cortex_services.sql` | Internal stage + Cortex Search service |
 | `04_create_procedures.sql` | Network rule, external access integration, stored procedures |
 | `05_demo_queries.sql` | All demo queries (direct SQL, search, analyst, agent) |

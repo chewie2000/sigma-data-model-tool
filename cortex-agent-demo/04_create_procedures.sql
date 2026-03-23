@@ -96,7 +96,7 @@ AS $$
 import json
 import requests
 
-SEMANTIC_MODEL = '@MARKO.ANALYTICS.SEMANTIC_MODELS/02_semantic_model.yaml'
+SEMANTIC_MODEL = '@MARKO.ANALYTICS.SEMANTIC_MODELS/SemModel.yml'
 
 def run(session, question: str):
     # Resolve account URL at runtime
@@ -163,7 +163,7 @@ AS $$
 import json
 import requests
 
-SEMANTIC_MODEL  = '@MARKO.ANALYTICS.SEMANTIC_MODELS/02_semantic_model.yaml'
+SEMANTIC_MODEL  = '@MARKO.ANALYTICS.SEMANTIC_MODELS/SemModel.yml'
 SEARCH_SERVICE  = 'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH'
 AGENT_LLM       = 'claude-3-5-sonnet'
 
