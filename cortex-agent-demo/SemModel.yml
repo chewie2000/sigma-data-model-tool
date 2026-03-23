@@ -97,21 +97,21 @@ tables:
         description: Total number of orders.
         expr: COUNT(O_ORDERKEY)
         data_type: NUMBER
-        agg: count
+        default_aggregation: count
 
       - name: total_order_value
         synonyms: [order value, gross order amount]
         description: Sum of the total price across all orders (as recorded on the order).
         expr: SUM(O_TOTALPRICE)
         data_type: NUMBER
-        agg: sum
+        default_aggregation: sum
 
       - name: avg_order_value
         synonyms: [average order size, mean order value, AOV]
         description: Average order total price.
         expr: AVG(O_TOTALPRICE)
         data_type: NUMBER
-        agg: avg
+        default_aggregation: avg
 
   # ---------------------------------------------------------------------------
   - name: lineitem
@@ -212,56 +212,56 @@ tables:
           This is the standard top-line revenue metric.
         expr: SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT))
         data_type: NUMBER
-        agg: sum
+        default_aggregation: sum
 
       - name: gross_revenue
         synonyms: [gross sales, extended price total]
         description: Total extended price before any discounts.
         expr: SUM(L_EXTENDEDPRICE)
         data_type: NUMBER
-        agg: sum
+        default_aggregation: sum
 
       - name: revenue_after_tax
         synonyms: [net revenue including tax, after-tax revenue]
         description: Revenue after discount and after tax.
         expr: SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT) * (1 + L_TAX))
         data_type: NUMBER
-        agg: sum
+        default_aggregation: sum
 
       - name: total_discount_amount
         synonyms: [discount total, discounts given, total discounts]
         description: Total monetary value of discounts applied.
         expr: SUM(L_EXTENDEDPRICE * L_DISCOUNT)
         data_type: NUMBER
-        agg: sum
+        default_aggregation: sum
 
       - name: avg_discount_rate
         synonyms: [average discount, mean discount percentage]
         description: Average discount rate across all line items (0–1 scale).
         expr: AVG(L_DISCOUNT)
         data_type: NUMBER
-        agg: avg
+        default_aggregation: avg
 
       - name: total_quantity
         synonyms: [units sold, quantity shipped, total units]
         description: Total quantity of parts sold across all line items.
         expr: SUM(L_QUANTITY)
         data_type: NUMBER
-        agg: sum
+        default_aggregation: sum
 
       - name: avg_quantity
         synonyms: [average order quantity, mean quantity]
         description: Average quantity per line item.
         expr: AVG(L_QUANTITY)
         data_type: NUMBER
-        agg: avg
+        default_aggregation: avg
 
       - name: line_item_count
         synonyms: [number of line items, lines, transactions]
         description: Count of individual line items.
         expr: COUNT(*)
         data_type: NUMBER
-        agg: count
+        default_aggregation: count
 
   # ---------------------------------------------------------------------------
   - name: customer
@@ -311,21 +311,21 @@ tables:
         description: Total number of distinct customers.
         expr: COUNT(C_CUSTKEY)
         data_type: NUMBER
-        agg: count
+        default_aggregation: count
 
       - name: avg_account_balance
         synonyms: [average balance, mean account balance]
         description: Average customer account balance.
         expr: AVG(C_ACCTBAL)
         data_type: NUMBER
-        agg: avg
+        default_aggregation: avg
 
       - name: total_account_balance
         synonyms: [total balance, sum of balances]
         description: Sum of all customer account balances.
         expr: SUM(C_ACCTBAL)
         data_type: NUMBER
-        agg: sum
+        default_aggregation: sum
 
   # ---------------------------------------------------------------------------
   - name: supplier
@@ -366,14 +366,14 @@ tables:
         description: Total number of suppliers.
         expr: COUNT(S_SUPPKEY)
         data_type: NUMBER
-        agg: count
+        default_aggregation: count
 
       - name: avg_supplier_balance
         synonyms: [average supplier balance]
         description: Average supplier account balance.
         expr: AVG(S_ACCTBAL)
         data_type: NUMBER
-        agg: avg
+        default_aggregation: avg
 
   # ---------------------------------------------------------------------------
   - name: part
@@ -435,14 +435,14 @@ tables:
         description: Total number of distinct parts in the catalogue.
         expr: COUNT(P_PARTKEY)
         data_type: NUMBER
-        agg: count
+        default_aggregation: count
 
       - name: avg_retail_price
         synonyms: [average price, mean retail price]
         description: Average retail price of parts.
         expr: AVG(P_RETAILPRICE)
         data_type: NUMBER
-        agg: avg
+        default_aggregation: avg
 
   # ---------------------------------------------------------------------------
   - name: nation
