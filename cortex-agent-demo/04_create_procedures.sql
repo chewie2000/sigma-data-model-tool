@@ -86,6 +86,7 @@ HANDLER = 'run'
 AS $$
 import json
 import requests
+import _snowflake
 
 SEMANTIC_MODEL = '@MARKO.ANALYTICS.SEMANTIC_MODELS/SemModel.yml'
 
@@ -97,13 +98,13 @@ def run(session, question: str):
     url = f"https://{account_locator}.snowflakecomputing.com/api/v2/cortex/analyst/message"
 
     # Re-use the session's auth token (no extra credentials needed)
-    token = session._conn._conn.rest.token
+    token = _snowflake.get_snowflake_token()
 
     headers = {
         "Authorization": f'Snowflake Token="{token}"',
         "Content-Type":  "application/json",
         "Accept":        "application/json",
-        "X-Snowflake-Authorization-Token-Type": "KEYPAIR_JWT",
+        "X-Snowflake-Authorization-Token-Type": "OAUTH",
     }
     payload = {
         "messages": [
@@ -153,6 +154,7 @@ HANDLER = 'run'
 AS $$
 import json
 import requests
+import _snowflake
 
 SEMANTIC_MODEL  = '@MARKO.ANALYTICS.SEMANTIC_MODELS/SemModel.yml'
 SEARCH_SERVICE  = 'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH'
@@ -163,13 +165,13 @@ def run(session, question: str):
         session.sql("SELECT LOWER(CURRENT_ACCOUNT_LOCATOR())").collect()[0][0]
     )
     url   = f"https://{account_locator}.snowflakecomputing.com/api/v2/cortex/agent:run"
-    token = session._conn._conn.rest.token
+    token = _snowflake.get_snowflake_token()
 
     headers = {
         "Authorization": f'Snowflake Token="{token}"',
         "Content-Type":  "application/json",
         "Accept":        "text/event-stream",          # SSE streaming
-        "X-Snowflake-Authorization-Token-Type": "KEYPAIR_JWT",
+        "X-Snowflake-Authorization-Token-Type": "OAUTH",
     }
     payload = {
         "model": AGENT_LLM,
