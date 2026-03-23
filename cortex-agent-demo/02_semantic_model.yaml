@@ -20,8 +20,6 @@ tables:
       database: MARKO
       schema: ANALYTICS
       table: ORDERS
-    primary_key:
-      columns: [O_ORDERKEY]
 
     dimensions:
       - name: order_key
@@ -125,8 +123,6 @@ tables:
       database: MARKO
       schema: ANALYTICS
       table: LINEITEM
-    primary_key:
-      columns: [L_ORDERKEY, L_LINENUMBER]
 
     dimensions:
       - name: order_key
@@ -276,8 +272,6 @@ tables:
       database: MARKO
       schema: ANALYTICS
       table: CUSTOMER
-    primary_key:
-      columns: [C_CUSTKEY]
 
     dimensions:
       - name: customer_key
@@ -341,8 +335,6 @@ tables:
       database: MARKO
       schema: ANALYTICS
       table: SUPPLIER
-    primary_key:
-      columns: [S_SUPPKEY]
 
     dimensions:
       - name: supplier_key
@@ -391,8 +383,6 @@ tables:
       database: MARKO
       schema: ANALYTICS
       table: PART
-    primary_key:
-      columns: [P_PARTKEY]
 
     dimensions:
       - name: part_key
@@ -461,8 +451,6 @@ tables:
       database: MARKO
       schema: ANALYTICS
       table: NATION
-    primary_key:
-      columns: [N_NATIONKEY]
 
     dimensions:
       - name: nation_key
@@ -489,8 +477,6 @@ tables:
       database: MARKO
       schema: ANALYTICS
       table: REGION
-    primary_key:
-      columns: [R_REGIONKEY]
 
     dimensions:
       - name: region_key
@@ -515,57 +501,57 @@ relationships:
     left_table: orders
     right_table: customer
     relationship_type: many_to_one
-    join_condition:
-      left_column: customer_key
-      right_column: customer_key
+    relationship_columns:
+      - left_column: customer_key
+        right_column: customer_key
 
   - name: lineitem_to_orders
     left_table: lineitem
     right_table: orders
     relationship_type: many_to_one
-    join_condition:
-      left_column: order_key
-      right_column: order_key
+    relationship_columns:
+      - left_column: order_key
+        right_column: order_key
 
   - name: lineitem_to_part
     left_table: lineitem
     right_table: part
     relationship_type: many_to_one
-    join_condition:
-      left_column: part_key
-      right_column: part_key
+    relationship_columns:
+      - left_column: part_key
+        right_column: part_key
 
   - name: lineitem_to_supplier
     left_table: lineitem
     right_table: supplier
     relationship_type: many_to_one
-    join_condition:
-      left_column: supplier_key
-      right_column: supplier_key
+    relationship_columns:
+      - left_column: supplier_key
+        right_column: supplier_key
 
   - name: customer_to_nation
     left_table: customer
     right_table: nation
     relationship_type: many_to_one
-    join_condition:
-      left_column: nation_key
-      right_column: nation_key
+    relationship_columns:
+      - left_column: nation_key
+        right_column: nation_key
 
   - name: supplier_to_nation
     left_table: supplier
     right_table: nation
     relationship_type: many_to_one
-    join_condition:
-      left_column: nation_key
-      right_column: nation_key
+    relationship_columns:
+      - left_column: nation_key
+        right_column: nation_key
 
   - name: nation_to_region
     left_table: nation
     right_table: region
     relationship_type: many_to_one
-    join_condition:
-      left_column: region_key
-      right_column: region_key
+    relationship_columns:
+      - left_column: region_key
+        right_column: region_key
 
 # =============================================================================
 # Verified queries (golden queries the model can use as few-shot examples)
