@@ -1,0 +1,648 @@
+# =============================================================================
+# Cortex Analyst Semantic Model — TPC-H Sales & Operations
+# Upload this file to a Snowflake stage (see 03_setup_cortex_services.sql)
+# =============================================================================
+
+name: tpch_sales_operations
+description: >
+  Semantic model for the TPC-H benchmark dataset covering orders, customers,
+  line items, suppliers, parts, and geography. Enables natural-language
+  analytics over sales revenue, order fulfilment, supplier performance,
+  and regional breakdowns.
+
+tables:
+  # ---------------------------------------------------------------------------
+  - name: orders
+    description: >
+      Each row is one customer order. Contains order dates, status, priority,
+      and the total price as recorded at order time.
+    base_table:
+      database: CORTEX_AGENT_DEMO
+      schema: TPCH
+      table: ORDERS
+    primary_key:
+      columns: [O_ORDERKEY]
+
+    dimensions:
+      - name: order_key
+        synonyms: [order id, order number]
+        description: Unique identifier for each order.
+        expr: O_ORDERKEY
+        data_type: NUMBER
+        unique: true
+
+      - name: customer_key
+        description: Foreign key to the CUSTOMER table.
+        expr: O_CUSTKEY
+        data_type: NUMBER
+
+      - name: order_status
+        synonyms: [status, order state]
+        description: >
+          Current status of the order.
+          F = Fulfilled, O = Open/Pending, P = Partially fulfilled.
+        expr: O_ORDERSTATUS
+        data_type: VARCHAR
+
+      - name: order_priority
+        synonyms: [priority, urgency]
+        description: >
+          Business priority of the order.
+          Values: 1-URGENT, 2-HIGH, 3-MEDIUM, 4-NOT SPECIFIED, 5-LOW.
+        expr: O_ORDERPRIORITY
+        data_type: VARCHAR
+
+      - name: order_date
+        synonyms: [order placed date, purchase date, date ordered]
+        description: Date the order was placed.
+        expr: O_ORDERDATE
+        data_type: DATE
+
+      - name: order_year
+        synonyms: [year, fiscal year]
+        description: Calendar year the order was placed.
+        expr: YEAR(O_ORDERDATE)
+        data_type: NUMBER
+
+      - name: order_month
+        synonyms: [month]
+        description: Calendar month (1–12) the order was placed.
+        expr: MONTH(O_ORDERDATE)
+        data_type: NUMBER
+
+      - name: order_quarter
+        synonyms: [quarter, fiscal quarter]
+        description: Calendar quarter (1–4) the order was placed.
+        expr: QUARTER(O_ORDERDATE)
+        data_type: NUMBER
+
+      - name: clerk
+        synonyms: [sales rep, assigned clerk]
+        description: Internal clerk or rep who handled the order.
+        expr: O_CLERK
+        data_type: VARCHAR
+
+      - name: ship_priority
+        synonyms: [shipping priority]
+        description: Shipping priority flag (0 = standard).
+        expr: O_SHIPPRIORITY
+        data_type: NUMBER
+
+      - name: comment
+        description: Free-text order comment.
+        expr: O_COMMENT
+        data_type: VARCHAR
+
+    measures:
+      - name: total_orders
+        synonyms: [number of orders, order count, orders placed]
+        description: Total number of orders.
+        expr: COUNT(O_ORDERKEY)
+        data_type: NUMBER
+        agg: count
+
+      - name: total_order_value
+        synonyms: [order value, gross order amount]
+        description: Sum of the total price across all orders (as recorded on the order).
+        expr: SUM(O_TOTALPRICE)
+        data_type: NUMBER
+        agg: sum
+
+      - name: avg_order_value
+        synonyms: [average order size, mean order value, AOV]
+        description: Average order total price.
+        expr: AVG(O_TOTALPRICE)
+        data_type: NUMBER
+        agg: avg
+
+  # ---------------------------------------------------------------------------
+  - name: lineitem
+    description: >
+      Line-item detail for every order. One row per part ordered on each order.
+      Contains pricing, discounts, taxes, quantities, and shipping dates.
+      This is the primary source for revenue and margin calculations.
+    base_table:
+      database: CORTEX_AGENT_DEMO
+      schema: TPCH
+      table: LINEITEM
+    primary_key:
+      columns: [L_ORDERKEY, L_LINENUMBER]
+
+    dimensions:
+      - name: order_key
+        description: Foreign key to ORDERS.
+        expr: L_ORDERKEY
+        data_type: NUMBER
+
+      - name: line_number
+        description: Line position within the order (1-based).
+        expr: L_LINENUMBER
+        data_type: NUMBER
+
+      - name: part_key
+        description: Foreign key to PART.
+        expr: L_PARTKEY
+        data_type: NUMBER
+
+      - name: supplier_key
+        description: Foreign key to SUPPLIER.
+        expr: L_SUPPKEY
+        data_type: NUMBER
+
+      - name: return_flag
+        synonyms: [return status, returned]
+        description: >
+          Whether the item was returned.
+          R = Returned, A = Accepted, N = Not yet determined.
+        expr: L_RETURNFLAG
+        data_type: VARCHAR
+
+      - name: line_status
+        synonyms: [item status, fulfilment status]
+        description: >
+          Fulfilment status of the line item.
+          O = Open (not yet shipped), F = Fulfilled/Shipped.
+        expr: L_LINESTATUS
+        data_type: VARCHAR
+
+      - name: ship_date
+        synonyms: [shipped date, date shipped]
+        description: Actual ship date of the line item.
+        expr: L_SHIPDATE
+        data_type: DATE
+
+      - name: ship_year
+        synonyms: [year shipped]
+        description: Calendar year the line item was shipped.
+        expr: YEAR(L_SHIPDATE)
+        data_type: NUMBER
+
+      - name: ship_month
+        synonyms: [month shipped]
+        description: Calendar month the line item was shipped.
+        expr: MONTH(L_SHIPDATE)
+        data_type: NUMBER
+
+      - name: commit_date
+        synonyms: [committed date, promised date]
+        description: Date the shipment was committed to the customer.
+        expr: L_COMMITDATE
+        data_type: DATE
+
+      - name: receipt_date
+        synonyms: [received date, delivery date]
+        description: Date the customer received the shipment.
+        expr: L_RECEIPTDATE
+        data_type: DATE
+
+      - name: ship_mode
+        synonyms: [shipping method, carrier, transport mode]
+        description: >
+          Shipping carrier/mode. Values: AIR, MAIL, RAIL, REG AIR, SHIP, TRUCK, FOB.
+        expr: L_SHIPMODE
+        data_type: VARCHAR
+
+      - name: ship_instruct
+        synonyms: [shipping instructions, delivery instructions]
+        description: Special instructions for shipment handling.
+        expr: L_SHIPINSTRUCT
+        data_type: VARCHAR
+
+    measures:
+      - name: net_revenue
+        synonyms: [revenue, net sales, sales revenue, income]
+        description: >
+          Net revenue after discount: SUM(extended_price * (1 - discount)).
+          This is the standard top-line revenue metric.
+        expr: SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT))
+        data_type: NUMBER
+        agg: sum
+
+      - name: gross_revenue
+        synonyms: [gross sales, extended price total]
+        description: Total extended price before any discounts.
+        expr: SUM(L_EXTENDEDPRICE)
+        data_type: NUMBER
+        agg: sum
+
+      - name: revenue_after_tax
+        synonyms: [net revenue including tax, after-tax revenue]
+        description: Revenue after discount and after tax.
+        expr: SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT) * (1 + L_TAX))
+        data_type: NUMBER
+        agg: sum
+
+      - name: total_discount_amount
+        synonyms: [discount total, discounts given, total discounts]
+        description: Total monetary value of discounts applied.
+        expr: SUM(L_EXTENDEDPRICE * L_DISCOUNT)
+        data_type: NUMBER
+        agg: sum
+
+      - name: avg_discount_rate
+        synonyms: [average discount, mean discount percentage]
+        description: Average discount rate across all line items (0–1 scale).
+        expr: AVG(L_DISCOUNT)
+        data_type: NUMBER
+        agg: avg
+
+      - name: total_quantity
+        synonyms: [units sold, quantity shipped, total units]
+        description: Total quantity of parts sold across all line items.
+        expr: SUM(L_QUANTITY)
+        data_type: NUMBER
+        agg: sum
+
+      - name: avg_quantity
+        synonyms: [average order quantity, mean quantity]
+        description: Average quantity per line item.
+        expr: AVG(L_QUANTITY)
+        data_type: NUMBER
+        agg: avg
+
+      - name: line_item_count
+        synonyms: [number of line items, lines, transactions]
+        description: Count of individual line items.
+        expr: COUNT(*)
+        data_type: NUMBER
+        agg: count
+
+  # ---------------------------------------------------------------------------
+  - name: customer
+    description: >
+      Customer master data including market segment, account balance,
+      and geographic assignment (nation).
+    base_table:
+      database: CORTEX_AGENT_DEMO
+      schema: TPCH
+      table: CUSTOMER
+    primary_key:
+      columns: [C_CUSTKEY]
+
+    dimensions:
+      - name: customer_key
+        synonyms: [customer id, cust key]
+        description: Unique customer identifier.
+        expr: C_CUSTKEY
+        data_type: NUMBER
+        unique: true
+
+      - name: customer_name
+        synonyms: [name, customer]
+        description: Customer name.
+        expr: C_NAME
+        data_type: VARCHAR
+
+      - name: nation_key
+        description: Foreign key to NATION.
+        expr: C_NATIONKEY
+        data_type: NUMBER
+
+      - name: market_segment
+        synonyms: [segment, industry, vertical, customer type]
+        description: >
+          Market segment the customer belongs to.
+          Values: AUTOMOBILE, BUILDING, FURNITURE, MACHINERY, HOUSEHOLD.
+        expr: C_MKTSEGMENT
+        data_type: VARCHAR
+
+      - name: phone
+        description: Customer phone number.
+        expr: C_PHONE
+        data_type: VARCHAR
+
+    measures:
+      - name: customer_count
+        synonyms: [number of customers, total customers, customer volume]
+        description: Total number of distinct customers.
+        expr: COUNT(C_CUSTKEY)
+        data_type: NUMBER
+        agg: count
+
+      - name: avg_account_balance
+        synonyms: [average balance, mean account balance]
+        description: Average customer account balance.
+        expr: AVG(C_ACCTBAL)
+        data_type: NUMBER
+        agg: avg
+
+      - name: total_account_balance
+        synonyms: [total balance, sum of balances]
+        description: Sum of all customer account balances.
+        expr: SUM(C_ACCTBAL)
+        data_type: NUMBER
+        agg: sum
+
+  # ---------------------------------------------------------------------------
+  - name: supplier
+    description: >
+      Supplier master data with nation assignment and account balance.
+    base_table:
+      database: CORTEX_AGENT_DEMO
+      schema: TPCH
+      table: SUPPLIER
+    primary_key:
+      columns: [S_SUPPKEY]
+
+    dimensions:
+      - name: supplier_key
+        synonyms: [supplier id, vendor id]
+        description: Unique supplier identifier.
+        expr: S_SUPPKEY
+        data_type: NUMBER
+        unique: true
+
+      - name: supplier_name
+        synonyms: [vendor, supplier]
+        description: Supplier name.
+        expr: S_NAME
+        data_type: VARCHAR
+
+      - name: nation_key
+        description: Foreign key to NATION.
+        expr: S_NATIONKEY
+        data_type: NUMBER
+
+      - name: phone
+        description: Supplier contact phone.
+        expr: S_PHONE
+        data_type: VARCHAR
+
+    measures:
+      - name: supplier_count
+        synonyms: [number of suppliers, vendor count]
+        description: Total number of suppliers.
+        expr: COUNT(S_SUPPKEY)
+        data_type: NUMBER
+        agg: count
+
+      - name: avg_supplier_balance
+        synonyms: [average supplier balance]
+        description: Average supplier account balance.
+        expr: AVG(S_ACCTBAL)
+        data_type: NUMBER
+        agg: avg
+
+  # ---------------------------------------------------------------------------
+  - name: part
+    description: >
+      Product / part catalogue including type, size, brand, and retail price.
+    base_table:
+      database: CORTEX_AGENT_DEMO
+      schema: TPCH
+      table: PART
+    primary_key:
+      columns: [P_PARTKEY]
+
+    dimensions:
+      - name: part_key
+        synonyms: [part id, product id, sku]
+        description: Unique part identifier.
+        expr: P_PARTKEY
+        data_type: NUMBER
+        unique: true
+
+      - name: part_name
+        synonyms: [product name, item name]
+        description: Descriptive part name (contains colour and material words).
+        expr: P_NAME
+        data_type: VARCHAR
+
+      - name: manufacturer
+        synonyms: [maker, brand owner]
+        description: Manufacturer label (Mfgr#1 through Mfgr#5).
+        expr: P_MFGR
+        data_type: VARCHAR
+
+      - name: brand
+        synonyms: [brand name]
+        description: Brand label (Brand#11 through Brand#55).
+        expr: P_BRAND
+        data_type: VARCHAR
+
+      - name: part_type
+        synonyms: [product type, category, material]
+        description: >
+          Type string containing material and finish, e.g. 'STANDARD ANODISED STEEL'.
+        expr: P_TYPE
+        data_type: VARCHAR
+
+      - name: size
+        synonyms: [part size, product size]
+        description: Part size (integer, 1–50).
+        expr: P_SIZE
+        data_type: NUMBER
+
+      - name: container
+        synonyms: [packaging, container type]
+        description: Packaging container type, e.g. SM BOX, LG DRUM.
+        expr: P_CONTAINER
+        data_type: VARCHAR
+
+    measures:
+      - name: part_count
+        synonyms: [number of parts, product count, catalogue size]
+        description: Total number of distinct parts in the catalogue.
+        expr: COUNT(P_PARTKEY)
+        data_type: NUMBER
+        agg: count
+
+      - name: avg_retail_price
+        synonyms: [average price, mean retail price]
+        description: Average retail price of parts.
+        expr: AVG(P_RETAILPRICE)
+        data_type: NUMBER
+        agg: avg
+
+  # ---------------------------------------------------------------------------
+  - name: nation
+    description: Country/nation reference data with region assignment.
+    base_table:
+      database: CORTEX_AGENT_DEMO
+      schema: TPCH
+      table: NATION
+    primary_key:
+      columns: [N_NATIONKEY]
+
+    dimensions:
+      - name: nation_key
+        description: Unique nation identifier.
+        expr: N_NATIONKEY
+        data_type: NUMBER
+        unique: true
+
+      - name: nation_name
+        synonyms: [country, country name, nation]
+        description: Country name in upper case.
+        expr: N_NAME
+        data_type: VARCHAR
+
+      - name: region_key
+        description: Foreign key to REGION.
+        expr: N_REGIONKEY
+        data_type: NUMBER
+
+  # ---------------------------------------------------------------------------
+  - name: region
+    description: Geographic region reference (5 regions globally).
+    base_table:
+      database: CORTEX_AGENT_DEMO
+      schema: TPCH
+      table: REGION
+    primary_key:
+      columns: [R_REGIONKEY]
+
+    dimensions:
+      - name: region_key
+        description: Unique region identifier.
+        expr: R_REGIONKEY
+        data_type: NUMBER
+        unique: true
+
+      - name: region_name
+        synonyms: [region, geography, area]
+        description: >
+          Geographic region name.
+          Values: AFRICA, AMERICA, ASIA, EUROPE, MIDDLE EAST.
+        expr: R_NAME
+        data_type: VARCHAR
+
+# =============================================================================
+# Relationships (joins between tables)
+# =============================================================================
+relationships:
+  - name: orders_to_customer
+    left_table: orders
+    right_table: customer
+    relationship_type: many_to_one
+    join_condition:
+      left_column: customer_key
+      right_column: customer_key
+
+  - name: lineitem_to_orders
+    left_table: lineitem
+    right_table: orders
+    relationship_type: many_to_one
+    join_condition:
+      left_column: order_key
+      right_column: order_key
+
+  - name: lineitem_to_part
+    left_table: lineitem
+    right_table: part
+    relationship_type: many_to_one
+    join_condition:
+      left_column: part_key
+      right_column: part_key
+
+  - name: lineitem_to_supplier
+    left_table: lineitem
+    right_table: supplier
+    relationship_type: many_to_one
+    join_condition:
+      left_column: supplier_key
+      right_column: supplier_key
+
+  - name: customer_to_nation
+    left_table: customer
+    right_table: nation
+    relationship_type: many_to_one
+    join_condition:
+      left_column: nation_key
+      right_column: nation_key
+
+  - name: supplier_to_nation
+    left_table: supplier
+    right_table: nation
+    relationship_type: many_to_one
+    join_condition:
+      left_column: nation_key
+      right_column: nation_key
+
+  - name: nation_to_region
+    left_table: nation
+    right_table: region
+    relationship_type: many_to_one
+    join_condition:
+      left_column: region_key
+      right_column: region_key
+
+# =============================================================================
+# Verified queries (golden queries the model can use as few-shot examples)
+# =============================================================================
+verified_queries:
+  - name: monthly_revenue_by_year
+    question: "What is the total net revenue by month for each year?"
+    sql: |
+      SELECT
+          YEAR(o.O_ORDERDATE)   AS order_year,
+          MONTH(o.O_ORDERDATE)  AS order_month,
+          SUM(l.L_EXTENDEDPRICE * (1 - l.L_DISCOUNT)) AS net_revenue
+      FROM CORTEX_AGENT_DEMO.TPCH.LINEITEM l
+      JOIN CORTEX_AGENT_DEMO.TPCH.ORDERS o ON l.L_ORDERKEY = o.O_ORDERKEY
+      GROUP BY 1, 2
+      ORDER BY 1, 2;
+
+  - name: top_10_customers_by_revenue
+    question: "Who are the top 10 customers by net revenue?"
+    sql: |
+      SELECT
+          c.C_NAME           AS customer_name,
+          c.C_MKTSEGMENT     AS market_segment,
+          SUM(l.L_EXTENDEDPRICE * (1 - l.L_DISCOUNT)) AS net_revenue
+      FROM CORTEX_AGENT_DEMO.TPCH.LINEITEM l
+      JOIN CORTEX_AGENT_DEMO.TPCH.ORDERS o   ON l.L_ORDERKEY = o.O_ORDERKEY
+      JOIN CORTEX_AGENT_DEMO.TPCH.CUSTOMER c ON o.O_CUSTKEY  = c.C_CUSTKEY
+      GROUP BY 1, 2
+      ORDER BY net_revenue DESC
+      LIMIT 10;
+
+  - name: revenue_by_region
+    question: "What is total revenue by region?"
+    sql: |
+      SELECT
+          r.R_NAME AS region,
+          SUM(l.L_EXTENDEDPRICE * (1 - l.L_DISCOUNT)) AS net_revenue
+      FROM CORTEX_AGENT_DEMO.TPCH.LINEITEM l
+      JOIN CORTEX_AGENT_DEMO.TPCH.ORDERS   o  ON l.L_ORDERKEY  = o.O_ORDERKEY
+      JOIN CORTEX_AGENT_DEMO.TPCH.CUSTOMER c  ON o.O_CUSTKEY   = c.C_CUSTKEY
+      JOIN CORTEX_AGENT_DEMO.TPCH.NATION   n  ON c.C_NATIONKEY = n.N_NATIONKEY
+      JOIN CORTEX_AGENT_DEMO.TPCH.REGION   r  ON n.N_REGIONKEY = r.R_REGIONKEY
+      GROUP BY 1
+      ORDER BY net_revenue DESC;
+
+  - name: revenue_by_market_segment
+    question: "Break down revenue by customer market segment."
+    sql: |
+      SELECT
+          c.C_MKTSEGMENT AS market_segment,
+          SUM(l.L_EXTENDEDPRICE * (1 - l.L_DISCOUNT)) AS net_revenue,
+          COUNT(DISTINCT o.O_ORDERKEY) AS order_count
+      FROM CORTEX_AGENT_DEMO.TPCH.LINEITEM l
+      JOIN CORTEX_AGENT_DEMO.TPCH.ORDERS   o ON l.L_ORDERKEY = o.O_ORDERKEY
+      JOIN CORTEX_AGENT_DEMO.TPCH.CUSTOMER c ON o.O_CUSTKEY  = c.C_CUSTKEY
+      GROUP BY 1
+      ORDER BY net_revenue DESC;
+
+  - name: shipping_mode_performance
+    question: "How does net revenue compare across shipping modes?"
+    sql: |
+      SELECT
+          L_SHIPMODE,
+          COUNT(*) AS line_item_count,
+          SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT)) AS net_revenue,
+          AVG(L_DISCOUNT) AS avg_discount_rate
+      FROM CORTEX_AGENT_DEMO.TPCH.LINEITEM
+      GROUP BY 1
+      ORDER BY net_revenue DESC;
+
+  - name: order_priority_breakdown
+    question: "How many orders and total value by order priority?"
+    sql: |
+      SELECT
+          O_ORDERPRIORITY,
+          COUNT(*) AS order_count,
+          SUM(O_TOTALPRICE) AS total_order_value
+      FROM CORTEX_AGENT_DEMO.TPCH.ORDERS
+      GROUP BY 1
+      ORDER BY order_count DESC;
