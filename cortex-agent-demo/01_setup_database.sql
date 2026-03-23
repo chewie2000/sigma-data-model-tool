@@ -59,56 +59,28 @@ CREATE OR REPLACE TABLE BUSINESS_KNOWLEDGE (
 
 INSERT INTO BUSINESS_KNOWLEDGE (CATEGORY, TITLE, CONTENT) VALUES
 ('KPI Definition', 'Revenue',
- 'Revenue is defined as the extended price of line items minus any discounts applied. '
- 'Formula: SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT)). '
- 'This is the net revenue before tax. To include tax use: SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT) * (1 + L_TAX)). '
- 'Revenue is the primary top-line metric used by the finance team.'),
+ $$Revenue is defined as the extended price of line items minus any discounts applied. Formula: SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT)). This is the net revenue before tax. To include tax use: SUM(L_EXTENDEDPRICE * (1 - L_DISCOUNT) * (1 + L_TAX)). Revenue is the primary top-line metric used by the finance team.$$),
 
 ('KPI Definition', 'Order Status Codes',
- 'Order status codes in the ORDERS table: '
- 'F = Fulfilled/Completed, O = Open/Pending, P = Partially fulfilled. '
- 'The majority of historical orders will be in status F. '
- 'Open orders (O) represent active demand. P orders need attention from fulfillment teams.'),
+ $$Order status codes in the ORDERS table: F = Fulfilled/Completed, O = Open/Pending, P = Partially fulfilled. The majority of historical orders will be in status F. Open orders (O) represent active demand. P orders need attention from fulfillment teams.$$),
 
 ('KPI Definition', 'Customer Segments',
- 'The MKTSEGMENT column in the CUSTOMER table classifies customers into market segments: '
- 'AUTOMOBILE, BUILDING, FURNITURE, MACHINERY, HOUSEHOLD. '
- 'These segments drive targeted marketing campaigns and pricing strategies. '
- 'The HOUSEHOLD and FURNITURE segments typically have the highest average order values.'),
+ $$The MKTSEGMENT column in the CUSTOMER table classifies customers into market segments: AUTOMOBILE, BUILDING, FURNITURE, MACHINERY, HOUSEHOLD. These segments drive targeted marketing campaigns and pricing strategies. The HOUSEHOLD and FURNITURE segments typically have the highest average order values.$$),
 
 ('KPI Definition', 'Supplier Performance',
- 'Supplier performance is measured by: '
- '1. Fill rate: percentage of part-supply combinations available (PARTSUPP.PS_AVAILQTY > 0). '
- '2. Supply cost: PS_SUPPLYCOST in PARTSUPP — lower is better. '
- '3. Comment flags in SUPPLIER.S_COMMENT may indicate certified or preferred supplier status. '
- 'The procurement team reviews supplier performance quarterly.'),
+ $$Supplier performance is measured by: 1. Fill rate: percentage of part-supply combinations available (PARTSUPP.PS_AVAILQTY > 0). 2. Supply cost: PS_SUPPLYCOST in PARTSUPP — lower is better. 3. Comment flags in SUPPLIER.S_COMMENT may indicate certified or preferred supplier status. The procurement team reviews supplier performance quarterly.$$),
 
 ('Business Context', 'Priority Levels',
- 'Order priority in O_ORDERPRIORITY: 1-URGENT, 2-HIGH, 3-MEDIUM, 4-NOT SPECIFIED, 5-LOW. '
- 'SLA commitments require urgent and high priority orders to ship within 24 hours. '
- 'Medium and below have a 72-hour ship window. '
- 'Breached SLAs are escalated to the VP of Operations.'),
+ $$Order priority in O_ORDERPRIORITY: 1-URGENT, 2-HIGH, 3-MEDIUM, 4-NOT SPECIFIED, 5-LOW. SLA commitments require urgent and high priority orders to ship within 24 hours. Medium and below have a 72-hour ship window. Breached SLAs are escalated to the VP of Operations.$$),
 
 ('Business Context', 'Fiscal Calendar',
- 'The company operates on a January–December fiscal year. '
- 'Q1: Jan–Mar, Q2: Apr–Jun, Q3: Jul–Sep, Q4: Oct–Dec. '
- 'Peak season is Q4 (holiday period). The TPC-H dataset spans orders from 1992 to 1998. '
- 'Year-over-year comparisons should account for data completeness at year boundaries.'),
+ $$The company operates on a January-December fiscal year. Q1: Jan-Mar, Q2: Apr-Jun, Q3: Jul-Sep, Q4: Oct-Dec. Peak season is Q4 (holiday period). The TPC-H dataset spans orders from 1992 to 1998. Year-over-year comparisons should account for data completeness at year boundaries.$$),
 
 ('Business Context', 'Regional Structure',
- 'Sales regions map to the REGION table: AFRICA, AMERICA, ASIA, EUROPE, MIDDLE EAST. '
- 'Each region contains multiple nations (NATION table). '
- 'Regional VPs own P&L for their respective geographies. '
- 'AMERICA and EUROPE are the two largest revenue-generating regions.'),
+ $$Sales regions map to the REGION table: AFRICA, AMERICA, ASIA, EUROPE, MIDDLE EAST. Each region contains multiple nations (NATION table). Regional VPs own P&L for their respective geographies. AMERICA and EUROPE are the two largest revenue-generating regions.$$),
 
 ('Technical Reference', 'Key Table Joins',
- 'Common join patterns in TPC-H: '
- 'Orders → Customer: ORDERS.O_CUSTKEY = CUSTOMER.C_CUSTKEY. '
- 'LineItem → Orders: LINEITEM.L_ORDERKEY = ORDERS.O_ORDERKEY. '
- 'LineItem → Part: LINEITEM.L_PARTKEY = PART.P_PARTKEY. '
- 'LineItem → Supplier: LINEITEM.L_SUPPKEY = SUPPLIER.S_SUPPKEY. '
- 'Supplier → Nation → Region: S_NATIONKEY → N_NATIONKEY → N_REGIONKEY → R_REGIONKEY. '
- 'Customer → Nation → Region: C_NATIONKEY → N_NATIONKEY → N_REGIONKEY → R_REGIONKEY.');
+ $$Common join patterns in TPC-H: Orders to Customer: ORDERS.O_CUSTKEY = CUSTOMER.C_CUSTKEY. LineItem to Orders: LINEITEM.L_ORDERKEY = ORDERS.O_ORDERKEY. LineItem to Part: LINEITEM.L_PARTKEY = PART.P_PARTKEY. LineItem to Supplier: LINEITEM.L_SUPPKEY = SUPPLIER.S_SUPPKEY. Supplier to Nation to Region: S_NATIONKEY = N_NATIONKEY, N_REGIONKEY = R_REGIONKEY. Customer to Nation to Region: C_NATIONKEY = N_NATIONKEY, N_REGIONKEY = R_REGIONKEY.$$);
 
 -- Verify setup
 SELECT 'ORDERS' AS tbl, COUNT(*) AS row_count FROM ORDERS
