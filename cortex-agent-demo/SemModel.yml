@@ -21,13 +21,16 @@ tables:
       schema: ANALYTICS
       table: ORDERS
 
+    primary_key:
+      columns:
+        - order_key
+
     dimensions:
       - name: order_key
         synonyms: [order id, order number]
         description: Unique identifier for each order.
         expr: O_ORDERKEY
         data_type: NUMBER
-        primary_key: true
 
       - name: customer_key
         description: Foreign key to the CUSTOMER table.
@@ -273,13 +276,16 @@ tables:
       schema: ANALYTICS
       table: CUSTOMER
 
+    primary_key:
+      columns:
+        - customer_key
+
     dimensions:
       - name: customer_key
         synonyms: [customer id, cust key]
         description: Unique customer identifier.
         expr: C_CUSTKEY
         data_type: NUMBER
-        primary_key: true
 
       - name: customer_name
         synonyms: [name, customer]
@@ -336,13 +342,16 @@ tables:
       schema: ANALYTICS
       table: SUPPLIER
 
+    primary_key:
+      columns:
+        - supplier_key
+
     dimensions:
       - name: supplier_key
         synonyms: [supplier id, vendor id]
         description: Unique supplier identifier.
         expr: S_SUPPKEY
         data_type: NUMBER
-        primary_key: true
 
       - name: supplier_name
         synonyms: [vendor, supplier]
@@ -384,13 +393,16 @@ tables:
       schema: ANALYTICS
       table: PART
 
+    primary_key:
+      columns:
+        - part_key
+
     dimensions:
       - name: part_key
         synonyms: [part id, product id, sku]
         description: Unique part identifier.
         expr: P_PARTKEY
         data_type: NUMBER
-        primary_key: true
 
       - name: part_name
         synonyms: [product name, item name]
@@ -452,12 +464,15 @@ tables:
       schema: ANALYTICS
       table: NATION
 
+    primary_key:
+      columns:
+        - nation_key
+
     dimensions:
       - name: nation_key
         description: Unique nation identifier.
         expr: N_NATIONKEY
         data_type: NUMBER
-        primary_key: true
 
       - name: nation_name
         synonyms: [country, country name, nation]
@@ -478,12 +493,15 @@ tables:
       schema: ANALYTICS
       table: REGION
 
+    primary_key:
+      columns:
+        - region_key
+
     dimensions:
       - name: region_key
         description: Unique region identifier.
         expr: R_REGIONKEY
         data_type: NUMBER
-        primary_key: true
 
       - name: region_name
         synonyms: [region, geography, area]
