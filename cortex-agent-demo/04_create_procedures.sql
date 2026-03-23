@@ -43,39 +43,30 @@ CREATE OR REPLACE EXTERNAL ACCESS INTEGRATION CORTEX_REST_INTEGRATION
 -- ---------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE SEARCH_KNOWLEDGE(
-    QUERY      VARCHAR,
+    QUERY       VARCHAR,
     MAX_RESULTS INT DEFAULT 3
 )
-RETURNS TABLE (DOC_ID NUMBER, CATEGORY VARCHAR, TITLE VARCHAR, CONTENT TEXT)
-LANGUAGE SQL
-AS
-$$
-DECLARE
-    search_json VARIANT;
-    query_obj   VARCHAR;
-BEGIN
-    query_obj := OBJECT_CONSTRUCT(
-        'query',   :QUERY,
-        'columns', ARRAY_CONSTRUCT('DOC_ID', 'CATEGORY', 'TITLE', 'CONTENT'),
-        'limit',   :MAX_RESULTS
-    )::VARCHAR;
+RETURNS VARIANT
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.11'
+PACKAGES = ('snowflake-snowpark-python')
+HANDLER = 'run'
+AS $$
+import json
 
-    search_json := PARSE_JSON(
-        SNOWFLAKE.CORTEX.SEARCH_PREVIEW(
-            'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH',
-            :query_obj
-        )
-    );
-
-    RETURN TABLE(
-        SELECT
-            value:DOC_ID::NUMBER   AS DOC_ID,
-            value:CATEGORY::VARCHAR AS CATEGORY,
-            value:TITLE::VARCHAR    AS TITLE,
-            value:CONTENT::TEXT     AS CONTENT
-        FROM TABLE(FLATTEN(input => :search_json:results))
-    );
-END;
+def run(session, query: str, max_results: int = 3):
+    query_obj = json.dumps({
+        "query":   query,
+        "columns": ["DOC_ID", "CATEGORY", "TITLE", "CONTENT"],
+        "limit":   max_results,
+    })
+    # Escape any single quotes in the JSON before embedding in SQL
+    safe = query_obj.replace("'", "''")
+    row = session.sql(
+        f"SELECT PARSE_JSON(SNOWFLAKE.CORTEX.SEARCH_PREVIEW("
+        f"'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH', '{safe}')):results AS results"
+    ).collect()[0]
+    return row['RESULTS']
 $$;
 
 
@@ -269,7 +260,7 @@ $$;
 -- 4f. Run quick smoke tests
 -- ---------------------------------------------------------------------------
 
--- Test 1: Cortex Search (pure SQL function, no HTTP)
+-- Test 1: Cortex Search — returns VARIANT with results array
 CALL SEARCH_KNOWLEDGE('how is revenue calculated');
 
 -- Test 2: Cortex Analyst (NL → SQL)
