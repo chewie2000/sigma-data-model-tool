@@ -1,9 +1,13 @@
 -- =============================================================================
--- STEP 7: Cleanup — removes all objects created by this demo
+-- STEP 6: Cleanup — removes all objects created by this demo
 -- Run only when you want to tear down the demo environment
 -- =============================================================================
 
-USE ROLE SYSADMIN;
+USE ROLE ACCOUNTADMIN;
+
+-- Drop External Access Integration and Network Rule (created in step 4)
+DROP EXTERNAL ACCESS INTEGRATION IF EXISTS CORTEX_REST_INTEGRATION;
+DROP NETWORK RULE IF EXISTS CORTEX_AGENT_DEMO.TPCH.CORTEX_REST_RULE;
 
 -- Drop Cortex Search Service
 DROP CORTEX SEARCH SERVICE IF EXISTS CORTEX_AGENT_DEMO.TPCH.BUSINESS_KNOWLEDGE_SEARCH;

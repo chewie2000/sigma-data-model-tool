@@ -1,138 +1,146 @@
 # Snowflake Cortex Agent Demo — TPC-H Sales & Operations
 
-End-to-end demo of a **Snowflake Cortex Agent** that combines:
+End-to-end demo of a **Snowflake Cortex Agent** driven entirely from SQL.
 
-| Tool | Type | What it does |
-|------|------|--------------|
-| **Cortex Analyst** | `cortex_analyst_text_to_sql` | Translates natural-language questions into SQL against the TPC-H semantic model |
-| **Cortex Search** | `cortex_search` | RAG over business knowledge docs (KPI definitions, business rules) |
-
-The agent automatically decides which tool(s) to invoke for each question.
+| Tool | What it does |
+|------|-------------|
+| **Cortex Analyst** | Natural-language → SQL over the TPC-H semantic model |
+| **Cortex Search** | Vector RAG over business knowledge documents |
+| **Cortex Agent** | Orchestrates both tools automatically per question |
 
 ---
 
 ## Architecture
 
 ```
-User question
-      │
-      ▼
-┌─────────────────────────────────────────────┐
-│         Cortex Agent (claude-3-5-sonnet)    │
-│                                             │
-│  ┌──────────────────┐  ┌──────────────────┐ │
-│  │  Cortex Analyst  │  │  Cortex Search   │ │
-│  │  (NL → SQL)      │  │  (vector RAG)    │ │
-│  │                  │  │                  │ │
-│  │  Semantic Model  │  │  Business        │ │
-│  │  (YAML on stage) │  │  Knowledge table │ │
-│  │                  │  │                  │ │
-│  │  TPC-H views     │  │  KPI definitions │ │
-│  │  (TPCH_SF1)      │  │  business rules  │ │
-│  └──────────────────┘  └──────────────────┘ │
-└─────────────────────────────────────────────┘
-      │
-      ▼
-Natural language answer + generated SQL
+                    SQL:  CALL ASK_CORTEX_AGENT('...')
+                                      │
+                          ┌───────────▼────────────┐
+                          │   Cortex Agent         │
+                          │   (claude-3-5-sonnet)  │
+                          └───────┬────────┬───────┘
+                                  │        │
+              ┌───────────────────┘        └────────────────────┐
+              │                                                   │
+  ┌───────────▼──────────────┐              ┌────────────────────▼──────┐
+  │   Cortex Analyst         │              │   Cortex Search            │
+  │   (NL → SQL)             │              │   SEARCH_PREVIEW()         │
+  │                          │              │                            │
+  │   02_semantic_model.yaml │              │   BUSINESS_KNOWLEDGE table │
+  │   on internal stage      │              │   (KPI defs, biz rules)    │
+  │                          │              │                            │
+  │   TPC-H views            │              │   Vector index             │
+  │   (TPCH_SF1 SF=1)        │              │   (auto-maintained)        │
+  └──────────────────────────┘              └────────────────────────────┘
 ```
 
 ---
 
 ## Prerequisites
 
-- Snowflake account with:
-  - Access to `SNOWFLAKE_SAMPLE_DATA.TPCH_SF1`
-  - `CORTEX_USER` privilege (or `SYSADMIN`)
-  - Cortex Analyst & Cortex Search enabled for your region
-- Python 3.9+
+- Snowflake account with access to `SNOWFLAKE_SAMPLE_DATA.TPCH_SF1`
+- `ACCOUNTADMIN` role (for network rule + external access integration in step 4)
+- Cortex Analyst and Cortex Search enabled for your account/region
 
 ---
 
 ## Setup — step by step
 
-### 1. Install Python dependencies
+### Step 1 — Database & data (`01_setup_database.sql`)
+
+Creates `CORTEX_AGENT_DEMO.TPCH`, views over `TPCH_SF1`, and seeds
+the `BUSINESS_KNOWLEDGE` table with 8 documents.
+
+```sql
+-- Run in Snowsight or snowsql
+SOURCE 01_setup_database.sql;
+```
+
+### Step 2 — Semantic model (`02_semantic_model.yaml`)
+
+The Cortex Analyst semantic model. Upload it to the stage created in step 3.
+
+### Step 3 — Cortex services (`03_setup_cortex_services.sql`)
+
+Creates the internal stage and the Cortex Search service.
+
+```sql
+SOURCE 03_setup_cortex_services.sql;
+```
+
+Upload the YAML to the stage (one-time, via snowsql CLI):
 
 ```bash
-pip install -r requirements.txt
+snowsql -a $SNOWFLAKE_ACCOUNT -u $SNOWFLAKE_USER \
+  -q "PUT file://02_semantic_model.yaml \
+       @CORTEX_AGENT_DEMO.TPCH.SEMANTIC_MODELS \
+       AUTO_COMPRESS=FALSE OVERWRITE=TRUE"
 ```
 
-### 2. Set environment variables
+Or drag-and-drop in Snowsight:
+`Data > Databases > CORTEX_AGENT_DEMO > TPCH > Stages > SEMANTIC_MODELS`
 
-```bash
-export SNOWFLAKE_ACCOUNT="xy12345.us-east-1"   # your account identifier
-export SNOWFLAKE_USER="your_user"
-export SNOWFLAKE_PASSWORD="your_password"
-export SNOWFLAKE_ROLE="SYSADMIN"               # optional, defaults to SYSADMIN
+Verify:
+```sql
+LIST @CORTEX_AGENT_DEMO.TPCH.SEMANTIC_MODELS;
 ```
 
-### 3. Run the database setup SQL
+### Step 4 — Stored procedures (`04_create_procedures.sql`)
 
-Open a Snowsight worksheet (or `snowsql`) and execute:
+Creates a network rule, external access integration, and three procedures:
 
-```
-01_setup_database.sql
-```
+| Procedure | What it calls |
+|-----------|-------------|
+| `SEARCH_KNOWLEDGE(query, limit)` | `SNOWFLAKE.CORTEX.SEARCH_PREVIEW` — pure SQL |
+| `ASK_CORTEX_ANALYST(question)` | Cortex Analyst REST API — returns SQL + answer |
+| `ASK_CORTEX_AGENT(question)` | Cortex Agent REST API — full orchestration |
 
-This creates:
-- `CORTEX_AGENT_DEMO` database + `TPCH` schema
-- Views pointing at `SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.*`
-- `BUSINESS_KNOWLEDGE` table with 8 seed documents
-- `CORTEX_DEMO_WH` warehouse
-
-### 4. Set up Cortex services + stage
-
-```
-03_setup_cortex_services.sql
+```sql
+SOURCE 04_create_procedures.sql;
 ```
 
-This creates:
-- `SEMANTIC_MODELS` internal stage
-- `BUSINESS_KNOWLEDGE_SEARCH` Cortex Search service
+> Note: requires `ACCOUNTADMIN` for the network rule and integration.
 
-### 5. Upload the semantic model YAML
+### Step 5 — Run the demo (`05_demo_queries.sql`)
 
-```bash
-python 04_upload_semantic_model.py
-```
+Everything is SQL from here. Four sections:
 
-Or manually in Snowsight:
-`Data > Databases > CORTEX_AGENT_DEMO > TPCH > Stages > SEMANTIC_MODELS > Upload`
+| Section | What it shows |
+|---------|--------------|
+| **A** | Direct TPC-H analytics (baseline SQL) |
+| **B** | `SNOWFLAKE.CORTEX.SEARCH_PREVIEW` inline + `CALL SEARCH_KNOWLEDGE(...)` |
+| **C** | `CALL ASK_CORTEX_ANALYST(...)` — NL questions → SQL |
+| **D** | `CALL ASK_CORTEX_AGENT(...)` — agent picks tools automatically |
 
-### 6. Run the demo
-
-**Scripted demo** (runs through 9 pre-defined questions):
-
-```bash
-python 05_cortex_agent_demo.py
-```
-
-**Interactive REPL** (ask your own questions, supports multi-turn):
-
-```bash
-python 06_interactive_agent.py
+```sql
+SOURCE 05_demo_queries.sql;
 ```
 
 ---
 
-## Sample questions to try
+## Sample questions
 
-### Structured analytics (→ Cortex Analyst)
-- *"What is the total net revenue for each year?"*
-- *"Which are the top 5 customer market segments by revenue?"*
-- *"Compare revenue across shipping modes."*
-- *"Show revenue by geographic region."*
-- *"How many orders per priority level and what is their total value?"*
-- *"Which nation has the highest number of customers?"*
-- *"What is the average discount rate by ship mode?"*
+### Structured analytics → Cortex Analyst
+```sql
+CALL ASK_CORTEX_ANALYST('What is the total net revenue for each year?');
+CALL ASK_CORTEX_ANALYST('Which are the top 5 customer segments by revenue?');
+CALL ASK_CORTEX_ANALYST('Compare revenue across shipping modes.');
+CALL ASK_CORTEX_ANALYST('Show me revenue by geographic region.');
+```
 
-### Business knowledge lookup (→ Cortex Search)
-- *"How is net revenue calculated?"*
-- *"What do the order status codes mean?"*
-- *"What are our fiscal quarter dates?"*
+### Knowledge lookup → Cortex Search
+```sql
+CALL SEARCH_KNOWLEDGE('how is revenue calculated');
+CALL SEARCH_KNOWLEDGE('order status codes meaning');
+CALL SEARCH_KNOWLEDGE('fiscal calendar quarter dates');
+```
 
-### Multi-tool (agent uses both)
-- *"What is the revenue formula and which region performs best?"*
-- *"Explain the order priority SLAs and show me counts per priority."*
+### Full agent orchestration
+```sql
+CALL ASK_CORTEX_AGENT('What is the revenue formula and which region performs best?');
+CALL ASK_CORTEX_AGENT('Explain order priority SLAs, then count open urgent orders.');
+CALL ASK_CORTEX_AGENT('Which shipping modes exist and what is revenue per mode?');
+```
 
 ---
 
@@ -140,34 +148,32 @@ python 06_interactive_agent.py
 
 | File | Purpose |
 |------|---------|
-| `01_setup_database.sql` | Create DB, schema, views, seed data |
-| `02_semantic_model.yaml` | Cortex Analyst semantic model (dimensions, measures, relationships, verified queries) |
-| `03_setup_cortex_services.sql` | Create stage & Cortex Search service |
-| `04_upload_semantic_model.py` | Upload YAML to internal stage |
-| `05_cortex_agent_demo.py` | Scripted end-to-end demo |
-| `06_interactive_agent.py` | Interactive multi-turn REPL |
-| `07_cleanup.sql` | Tear down all demo objects |
-| `requirements.txt` | Python dependencies |
+| `01_setup_database.sql` | DB, schema, TPC-H views, seed knowledge docs |
+| `02_semantic_model.yaml` | Cortex Analyst semantic model |
+| `03_setup_cortex_services.sql` | Internal stage + Cortex Search service |
+| `04_create_procedures.sql` | Network rule, external access integration, stored procedures |
+| `05_demo_queries.sql` | All demo queries (direct SQL, search, analyst, agent) |
+| `06_cleanup.sql` | Tear down all demo objects |
 
 ---
 
-## TPC-H schema overview
+## TPC-H schema
 
 ```
-REGION (5 rows)
-  └── NATION (25 rows)
-        ├── CUSTOMER (150,000 rows)  ─── ORDERS (1.5M) ─── LINEITEM (6M)
-        └── SUPPLIER (10,000 rows)  ─┘                         │
-                                                               PART (200,000)
-PARTSUPP (800,000 rows)  ←── links PART + SUPPLIER
+REGION (5)
+  └── NATION (25)
+        ├── CUSTOMER (150k)  ── ORDERS (1.5M) ── LINEITEM (6M)
+        └── SUPPLIER (10k)  ─┘                       │
+                                                    PART (200k)
+PARTSUPP (800k) — links PART + SUPPLIER
 ```
 
-Scale factor 1 = ~1 GB raw data, all available in `SNOWFLAKE_SAMPLE_DATA.TPCH_SF1`.
+Scale factor 1 ≈ 1 GB, available in `SNOWFLAKE_SAMPLE_DATA.TPCH_SF1`.
 
 ---
 
 ## Cleanup
 
-```
-07_cleanup.sql
+```sql
+SOURCE 06_cleanup.sql;
 ```
