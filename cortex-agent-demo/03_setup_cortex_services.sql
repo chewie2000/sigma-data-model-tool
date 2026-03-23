@@ -58,30 +58,21 @@ SELECT PARSE_JSON(
 ) AS search_results;
 
 -- ---------------------------------------------------------------------------
--- 3c. Cortex Agent
---     Orchestrates Cortex Analyst (NL→SQL) and Cortex Search (RAG).
---     The agent decides which tool(s) to call per question automatically.
+-- 3c. Cortex Agent — no DDL required
+--
+--     Unlike Cortex Search, the Cortex Agent has no persistent object.
+--     It is invoked on-demand via the REST API (/api/v2/cortex/agent:run),
+--     with the model and tools specified per call.
+--
+--     The SQL wrapper for the agent is the ASK_CORTEX_AGENT stored
+--     procedure created in 04_create_procedures.sql.  That procedure
+--     wires up:
+--       • Cortex Analyst  → @MARKO.ANALYTICS.SEMANTIC_MODELS/SemModel.yml
+--       • Cortex Search   → MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH
+--       • LLM model       → claude-3-5-sonnet
+--
+--     To invoke:  CALL MARKO.ANALYTICS.ASK_CORTEX_AGENT('your question');
 -- ---------------------------------------------------------------------------
-
-CREATE OR REPLACE CORTEX AGENT TPCH_SALES_AGENT
-    MODEL = 'claude-3-5-sonnet'
-    COMMENT = 'Sales analytics agent for TPC-H — combines NL-to-SQL via Cortex Analyst and document RAG via Cortex Search'
-    TOOLS = (
-        CORTEX_ANALYST_TEXT_TO_SQL,
-        CORTEX_SEARCH_SERVICE
-    )
-    TOOL_RESOURCES = (
-        CORTEX_ANALYST_TEXT_TO_SQL = (
-            SEMANTIC_MODEL_FILE = '@MARKO.ANALYTICS.SEMANTIC_MODELS/SemModel.yml'
-        ),
-        CORTEX_SEARCH_SERVICE = (
-            NAME = 'MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH',
-            MAX_RESULTS = 3
-        )
-    );
-
--- Check agent status
-SHOW CORTEX AGENTS;
 
 -- ---------------------------------------------------------------------------
 -- 3d. Grant permissions (adjust role as needed)
@@ -94,7 +85,6 @@ SHOW CORTEX AGENTS;
 -- GRANT ALL PRIVILEGES ON TABLE MARKO.ANALYTICS.BUSINESS_KNOWLEDGE TO ROLE SYSADMIN;
 -- GRANT ALL PRIVILEGES ON STAGE MARKO.ANALYTICS.SEMANTIC_MODELS TO ROLE SYSADMIN;
 -- GRANT ALL PRIVILEGES ON CORTEX SEARCH SERVICE MARKO.ANALYTICS.BUSINESS_KNOWLEDGE_SEARCH TO ROLE SYSADMIN;
--- GRANT ALL PRIVILEGES ON CORTEX AGENT MARKO.ANALYTICS.TPCH_SALES_AGENT TO ROLE SYSADMIN;
 -- GRANT USAGE ON WAREHOUSE CORTEX_DEMO_WH TO ROLE SYSADMIN;
 
 -- ---------------------------------------------------------------------------
